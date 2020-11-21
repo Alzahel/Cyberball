@@ -80,5 +80,28 @@ namespace Assets.Scripts
 
         }
         #endregion
+
+        #region Score management
+
+        [SyncVar] private int team1Score;
+        [SyncVar] private int team2Score;
+
+        [Server]
+        public void ScoreGoal(int teamID)
+        {
+            if (isRoundOver) return;
+
+            if (teamID == 1) team1Score++;
+            else team2Score++;
+
+            isRoundOver = true;
+            
+            //StartCoroutine(ResetAfterGoal());
+
+
+            Debug.Log("team 1 : "+ team1Score + "team 2 : " + team2Score );
+        }
+
+        #endregion
     }
 }

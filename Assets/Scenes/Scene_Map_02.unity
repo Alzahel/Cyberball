@@ -4048,6 +4048,7 @@ GameObject:
   - component: {fileID: 912734403}
   - component: {fileID: 912734402}
   - component: {fileID: 912734401}
+  - component: {fileID: 912734405}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -4131,6 +4132,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &912734405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912734400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4df23421dbd8346b274e6b54b4bda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {fileID: 378960066}
+  onPlayerPosition: 3
 --- !u!114 &912734406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8659,11 +8674,42 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 122154, guid: 3517d6179b17d7d41b2ab3881cb2cd67, type: 3}
   m_PrefabInstance: {fileID: 48685319}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593494987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593494986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a674619a6037984b8230370cfc00a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  goalTeamID: 2
 --- !u!4 &1593494988 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494562, guid: 3517d6179b17d7d41b2ab3881cb2cd67, type: 3}
   m_PrefabInstance: {fileID: 48685319}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593494989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593494986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 3358533860
+  serverOnly: 0
+  m_AssetId: 3517d6179b17d7d41b2ab3881cb2cd67
+  hasSpawned: 0
 --- !u!135 &1593494991
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9214,11 +9260,42 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 122154, guid: 3517d6179b17d7d41b2ab3881cb2cd67, type: 3}
   m_PrefabInstance: {fileID: 1780945405}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1738568399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738568398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a674619a6037984b8230370cfc00a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  goalTeamID: 1
 --- !u!4 &1738568400 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494562, guid: 3517d6179b17d7d41b2ab3881cb2cd67, type: 3}
   m_PrefabInstance: {fileID: 1780945405}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1738568401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738568398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1241064240
+  serverOnly: 0
+  m_AssetId: 3517d6179b17d7d41b2ab3881cb2cd67
+  hasSpawned: 0
 --- !u!135 &1738568403
 SphereCollider:
   m_ObjectHideFlags: 0
