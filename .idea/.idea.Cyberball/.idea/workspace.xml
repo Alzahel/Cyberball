@@ -22,24 +22,11 @@
     <list default="true" id="d0eab473-54be-4889-bacc-70fc56399293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/HostRoom.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/HostRoom.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/JoinRoomAsClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/JoinRoomAsClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/LobbyDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/LobbyDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/PlayerNameInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/PlayerNameInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiLobbySetup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiLobbySetup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiMenuSetup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiMenuSetup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,19 +49,20 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiMenuSetup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiLobbySetup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/JoinRoomAsClient.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/HostRoom.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/PlayerNameInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/LobbyDisplay.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/AudioManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Health.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" />
       </list>
     </option>
   </component>
@@ -130,7 +118,7 @@
       <updated>1605998182793</updated>
       <workItem from="1605998201897" duration="4661000" />
       <workItem from="1606005588996" duration="5397000" />
-      <workItem from="1606056934514" duration="5536000" />
+      <workItem from="1606056934514" duration="11137000" />
     </task>
     <servers />
   </component>
@@ -164,5 +152,9 @@
     </state>
     <state x="316" y="117" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1605999023515" />
     <state x="-1108" y="41" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606059450301" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606066791942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606066791942" />
   </component>
 </project>

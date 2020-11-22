@@ -8,11 +8,11 @@ namespace Cyberball.Spawn
 {
     public class PlayerSpawnSystem : NetworkBehaviour
     {
-        public static PlayerSpawnSystem instance;
+        public static PlayerSpawnSystem Instance;
 
         private void Awake()
         {
-            if (instance = null) instance = this;
+            if (Instance = null) Instance = this;
 
         }
 
@@ -39,6 +39,20 @@ namespace Cyberball.Spawn
             }
         }
 
+        // We send the order to the client that own authority on the player to set his position to spawn pos
+        [TargetRpc]
+        public void SpawnPlayer(NetworkConnection conn)
+        {
+            NetworkGamePlayer player = conn.identity.GetComponent<NetworkGamePlayer>();
+
+            Transform spawnPosition = getSpawnPos(player.TeamID);
+
+             if(spawnPosition != null)
+            {
+                player.transform.SetPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
+                player.gameObject.SetActive(true);
+            }
+        }
         public Transform getSpawnPos(int teamID)
         {
             PlayerSpawnPoint spawnPoint = null;
@@ -55,22 +69,7 @@ namespace Cyberball.Spawn
 
             return spawnPoint.transform;
         }
-
-        // We send the order to the client that own authority on the player to set his position to spawn pos
-        [TargetRpc]
-        public void SpawnPlayer(NetworkConnection conn)
-        {
-            NetworkGamePlayer player = conn.identity.GetComponent<NetworkGamePlayer>();
-
-            Transform spawnPosition = getSpawnPos(player.TeamID);
-
-             if(spawnPosition != null)
-            {
-                player.transform.position = spawnPosition.position;
-                player.transform.rotation = spawnPosition.rotation;
-                player.gameObject.SetActive(true);
-            }
-        }
+        
 
         #endregion
     }

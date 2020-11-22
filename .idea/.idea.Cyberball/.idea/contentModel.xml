@@ -51,6 +51,103 @@
             <e p="Utility.cs" t="Include" />
           </e>
         </e>
+        <e p="FirstGearGames" t="Include">
+          <e p="License.txt" t="Include" />
+          <e p="README.txt" t="Include" />
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="DrawBitMaskField.cs" t="Include" />
+            </e>
+            <e p="EditorRuntime" t="Include">
+              <e p="BitMaskAttribute.cs" t="Include" />
+            </e>
+            <e p="Utilities" t="Include">
+              <e p="Network" t="Include">
+                <e p="Quaternions.cs" t="Include" />
+              </e>
+              <e p="Quaternions.cs" t="Include" />
+              <e p="Transforms.cs" t="Include" />
+              <e p="Vectors.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Supporters" t="Include">
+            <e p="Assets" t="Include">
+              <e p="ChangeLog.txt" t="Include" />
+              <e p="FastProximityChecker" t="Include">
+                <e p="Demo" t="Include">
+                  <e p="Scripts" t="Include">
+                    <e p="AutoMovePlayer.cs" t="Include" />
+                    <e p="CubeSpawner.cs" t="Include" />
+                    <e p="PlayerCubeSpawner.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="FastProximityChecker.cs" t="Include" />
+                  <e p="ProximityCheckerManager.cs" t="Include" />
+                </e>
+              </e>
+              <e p="FlexNetworkAnimator" t="Include">
+                <e p="Demos" t="Include">
+                  <e p="Scripts" t="Include">
+                    <e p="MoveAndAnimate.cs" t="Include" />
+                    <e p="MoveAndAnimateServerAuth.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="FlexNetworkAnimatorEditor.cs" t="Include" />
+                  </e>
+                  <e p="FlexNetworkAnimator.cs" t="Include" />
+                </e>
+              </e>
+              <e p="FlexNetworkTransform" t="Include">
+                <e p="Demos" t="Include">
+                  <e p="Comparison" t="Include">
+                    <e p="Scripts" t="Include">
+                      <e p="AuthMotor.cs" t="Include" />
+                      <e p="AutoMotor.cs" t="Include" />
+                      <e p="ClientDataRejector.cs" t="Include" />
+                      <e p="Motor.cs" t="Include" />
+                    </e>
+                  </e>
+                  <e p="Platforms" t="Include">
+                    <e p="Scripts" t="Include">
+                      <e p="Motor3D.cs" t="Include" />
+                      <e p="MovingPlatform.cs" t="Include" />
+                    </e>
+                  </e>
+                </e>
+                <e p="README.txt" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="FlexNetworkTransformBaseEditor.cs" t="Include" />
+                    <e p="FlexNetworkTransformChildEditor.cs" t="Include" />
+                    <e p="FlexNetworkTransformEditor.cs" t="Include" />
+                  </e>
+                  <e p="FlexNetworkTransform.cs" t="Include" />
+                  <e p="FlexNetworkTransformBase.cs" t="Include" />
+                  <e p="FlexNetworkTransformChild.cs" t="Include" />
+                  <e p="Supporting.cs" t="Include" />
+                </e>
+              </e>
+              <e p="ReactivePhysics" t="Include">
+                <e p="Demo" t="Include">
+                  <e p="Scripts" t="Include">
+                    <e p="Controlled.cs" t="Include" />
+                    <e p="Controlled2D.cs" t="Include" />
+                    <e p="RollableCubeSpawner.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="ReactivePhysicsObjectEditor.cs" t="Include" />
+                  </e>
+                  <e p="ReactivePhysicsObject.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="Inputs" t="Include">
           <e p="PlayerInputActions.cs" t="Include" />
         </e>

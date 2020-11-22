@@ -201,7 +201,7 @@ MonoBehaviour:
   runInBackground: 1
   autoStartServerBuild: 1
   showDebugMessages: 0
-  serverTickRate: 30
+  serverTickRate: 60
   offlineScene: 
   onlineScene: 
   transport: {fileID: 16196410}
@@ -350,8 +350,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0
   players: []
+  timeBeforeRespawn: 1
 --- !u!114 &303228495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkManager: {fileID: 16196411}
-  enterIpAddressPannel: {fileID: 891067153}
+  enterIpAddressPanel: {fileID: 0}
   lobbyPanel: {fileID: 808298696}
   ipAddressInputField: {fileID: 174785825}
   joinButton: {fileID: 1866418864}
@@ -1113,7 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkManager: {fileID: 16196411}
   landingPagePanel: {fileID: 1594032604}
-  lobbyPannel: {fileID: 808298696}
+  lobbyPanel: {fileID: 808298696}
 --- !u!114 &1594032610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,7 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6c2fd4c09b88e46a64fd27aa6dc967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameinputField: {fileID: 1594032607}
+  nameInputField: {fileID: 1594032607}
   continueButton: {fileID: 1594032606}
 --- !u!1 &1650862648 stripped
 GameObject:

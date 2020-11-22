@@ -78,9 +78,9 @@ namespace Network
             GameObject playerSpawnSystemInstance = Instantiate(spawnSystem);
             NetworkServer.Spawn(playerSpawnSystemInstance);
 
-            PlayerSpawnSystem.instance = playerSpawnSystemInstance.GetComponent<PlayerSpawnSystem>();
+            PlayerSpawnSystem.Instance = playerSpawnSystemInstance.GetComponent<PlayerSpawnSystem>();
 
-            Transform spawnPosition = PlayerSpawnSystem.instance.getSpawnPos(roomPlayer.GetComponent<NetworkRoomPlayerExt>().TeamID);
+            Transform spawnPosition = PlayerSpawnSystem.Instance.getSpawnPos(roomPlayer.GetComponent<NetworkRoomPlayerExt>().TeamID);
             //spawnPosition.rotation = new Quaternion(spawnPosition.rotation.x, -spawnPosition.rotation.y, spawnPosition.rotation.z, spawnPosition.rotation.w); 
             GameObject gamePlayer = spawnPosition != null
                 ? Instantiate(playerPrefab, spawnPosition.position, spawnPosition.rotation)

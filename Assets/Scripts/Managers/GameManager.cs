@@ -35,6 +35,9 @@ namespace Managers
             if (SceneManager.GetActiveScene().name.StartsWith("Scene_Map"))
                 if (!allPlayersLoaded) AllPlayersLoadedCheck();
                 else if (IsRoundOver || currentRound == 0) StartNewRound();
+            
+            
+            if(Input.GetKeyDown(KeyCode.R)) StartNewRound();
                  
         }
 
@@ -68,13 +71,15 @@ namespace Managers
             StartCoroutine(StartRound());
         }
 
+
+        [SerializeField] private float timeBeforeRespawn =5;
         [Server]
         private IEnumerator StartRound()
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(timeBeforeRespawn);
             Debug.Log("Round Started");
 
-            PlayerSpawnSystem.instance.SpawnAllPlayers();
+            PlayerSpawnSystem.Instance.SpawnAllPlayers();
 
         }
         #endregion
