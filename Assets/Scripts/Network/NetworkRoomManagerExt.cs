@@ -6,19 +6,19 @@ using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cyberball.Network
+namespace Network
 {
     public class NetworkRoomManagerExt : NetworkRoomManager
     {
         public static event Action OnClientConnected;
         public static event Action OnClientDisconnected;
 
-        public static NetworkRoomManagerExt instance;
+        public static NetworkRoomManagerExt Instance;
 
         public List<GameObject> team1 = new List<GameObject>();
         public List<GameObject> team2 = new List<GameObject>();
 
-        private Button startButton = null;
+        private Button startButton;
 
         [SerializeField] GameObject spawnSystem;
 
@@ -26,7 +26,7 @@ namespace Cyberball.Network
         {
             base.Awake();
 
-            if (instance == null) instance = this;
+            if (Instance == null) Instance = this;
         }
 
 
@@ -46,7 +46,7 @@ namespace Cyberball.Network
         {
             base.OnServerConnect(conn);
 
-            startButton = UiLobbySetup.instance.startButton;
+            startButton = UiLobbySetup.Instance.startButton;
             startButton.onClick.AddListener(StartGame);
         }
 
@@ -72,7 +72,7 @@ namespace Cyberball.Network
         }
 
 
-       //Override the creation of gameplayer to use our own SpawnSystem with custom positions
+        //Override the creation of gameplayer to use our own SpawnSystem with custom positions
         public override GameObject OnRoomServerCreateGamePlayer(NetworkConnection conn, GameObject roomPlayer)
         {
             GameObject playerSpawnSystemInstance = Instantiate(spawnSystem);

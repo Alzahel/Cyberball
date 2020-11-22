@@ -2,19 +2,19 @@
 
 namespace Cyberball.Health
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(global::Health.Health))]
     public class Healable : MonoBehaviour
     {
-        private Health health = null;
+        private global::Health.Health health;
 
         private void Awake()
         {
-            health = GetComponent<Health>();
+            health = GetComponent<global::Health.Health>();
         }
 
-        public void Heal(int _healAmount)
+        public void Heal(int healAmount)
         {
-            health.Remove(_healAmount);
+            health.Remove(healAmount);
         }
     }
 }

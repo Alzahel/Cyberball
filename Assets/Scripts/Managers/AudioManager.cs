@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Cyberball.Managers
+namespace Managers
 {
     //MADE WITH https://www.youtube.com/watch?v=HhFKtiRd0qI
 
@@ -18,17 +16,17 @@ namespace Cyberball.Managers
         public float pitch = 1f;
 
         [Range(0, 1)]
-        public float randomVolume = 0f;
+        public float randomVolume;
         [Range(0, 1.5f)]
-        public float randomPitch = 0f;
+        public float randomPitch;
 
         private AudioSource source;
 
         public AudioSource Source { get => source; set { source = value; source.clip = clip; } }
 
-        public void SetSource (AudioSource _source)
+        public void SetSource (AudioSource source)
         {
-            source = _source;
+            this.source = source;
         
         }
 
@@ -42,34 +40,34 @@ namespace Cyberball.Managers
 
     public class AudioManager : MonoBehaviour
     {
-        public static AudioManager instance;
+        public static AudioManager Instance;
 
         [SerializeField]
-        private Sound[] sounds = null;
+        private Sound[] sounds;
 
         private void Awake()
         {
-            if (instance != null) Debug.LogError("More than 1 audio Manager in the scene");
-            else instance = this;
+            if (Instance != null) Debug.LogError("More than 1 audio Manager in the scene");
+            else Instance = this;
         }
 
         private void Start()
         {
             for (int i = 0; i < sounds.Length; i++)
             {
-                GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
-                _go.transform.SetParent(this.transform);
-                _go.AddComponent<AudioSource>();
-                sounds[i].Source = _go.AddComponent<AudioSource>();
+                GameObject go = new GameObject("Sound_" + i + "_" + sounds[i].name);
+                go.transform.SetParent(this.transform);
+                go.AddComponent<AudioSource>();
+                sounds[i].Source = go.AddComponent<AudioSource>();
                 sounds[i].Source.clip = sounds[i].clip;
             }
         }
 
-        public void PlaySound(string _name)
+        public void PlaySound(string name)
         {
             for (int i = 0; i < sounds.Length; i++)
             {
-                if (sounds[i].name == _name)
+                if (sounds[i].name == name)
                 {
                     sounds[i].Play();
                     return;
@@ -77,14 +75,14 @@ namespace Cyberball.Managers
             }
 
             //no sound found
-            Debug.LogWarning("AudioManager : Sound not found :" + _name);
+            Debug.LogWarning("AudioManager : Sound not found :" + name);
         }
 
-        public void PlaySpatialSound(string _name, Vector3 position)
+        public void PlaySpatialSound(string name, Vector3 position)
         {
             for (int i = 0; i < sounds.Length; i++)
             {
-                if (sounds[i].name == _name)
+                if (sounds[i].name == name)
                 {
                     AudioSource audioSource = sounds[i].Source;
                     audioSource.maxDistance = 100f;
@@ -97,7 +95,7 @@ namespace Cyberball.Managers
             }
 
             //no sound found
-            Debug.LogWarning("AudioManager : Sound not found :" + _name);
+            Debug.LogWarning("AudioManager : Sound not found :" + name);
         }
     }
 }

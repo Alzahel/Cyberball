@@ -1,24 +1,21 @@
 ﻿using Mirror;
 using UnityEngine;
 
-namespace Cyberball
+public class HostRoom : MonoBehaviour
 {
-    public class HostRoom : MonoBehaviour
+    [SerializeField] private NetworkRoomManager networkManager;
+
+    [Header("UI")]
+    [SerializeField] private GameObject landingPagePanel;
+    [SerializeField] private GameObject lobbyPanel;
+
+    public void StartHost()
     {
-        [SerializeField] private NetworkRoomManager networkManager = null;
+        networkManager.StartHost();
 
-        [Header("UI")]
-        [SerializeField] private GameObject landingPagePanel = null;
-        [SerializeField] private GameObject lobbyPannel = null;
+        if (!networkManager.isNetworkActive) return;
 
-        public void StartHost()
-        {
-            networkManager.StartHost();
-
-            if (!networkManager.isNetworkActive) return;
-
-            landingPagePanel.SetActive(false);
-            lobbyPannel.SetActive(true);
-        }
+        landingPagePanel.SetActive(false);
+        lobbyPanel.SetActive(true);
     }
 }

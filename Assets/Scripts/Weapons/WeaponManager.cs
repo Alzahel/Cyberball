@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Cyberball.Managers;
+using Managers;
 using Mirror;
 using UnityEngine;
 
@@ -91,7 +91,7 @@ namespace Cyberball.Weapons
             {
                 anim.SetTrigger("Reload");
             }
-            if (AudioManager.instance != null) AudioManager.instance.PlaySpatialSound("Reload", transform.position);
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySpatialSound("Reload", transform.position);
         }
 
         [Command]

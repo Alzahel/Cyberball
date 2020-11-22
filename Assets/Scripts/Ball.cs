@@ -1,7 +1,7 @@
 ﻿using Cyberball;
-using Cyberball.Managers;
-using Cyberball.Network;
 using JetBrains.Annotations;
+using Managers;
+using Network;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -41,7 +41,7 @@ public class Ball : MonoBehaviour
 
         if (col.CompareTag($"Goal") && col.GetComponent<Goal>().GoalTeamID != player.TeamID) 
         { 
-            GameManager.instance.ScoreGoal(player.TeamID);
+            GameManager.Instance.ScoreGoal(player.TeamID);
             ResetBall();
         }
     }

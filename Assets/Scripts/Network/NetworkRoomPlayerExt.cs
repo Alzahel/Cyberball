@@ -1,7 +1,7 @@
 ﻿using Mirror;
 using UnityEngine;
 
-namespace Cyberball.Network
+namespace Network
 {
     public class NetworkRoomPlayerExt : NetworkRoomPlayer
     {
@@ -23,7 +23,7 @@ namespace Cyberball.Network
             set 
             { 
                 isLeader = value;
-                UiLobbySetup.instance.startButton.gameObject.SetActive(value);
+                UiLobbySetup.Instance.startButton.gameObject.SetActive(value);
             }
         }
 
@@ -33,21 +33,21 @@ namespace Cyberball.Network
 
         public void HandleTeamChanged(int oldValue, int newValue) 
         { 
-            LobbyDisplay.instance.UpdateDisplay();
+            LobbyDisplay.Instance.UpdateDisplay();
             if (newValue == 1)
             {
-                NetworkRoomManagerExt.instance.team1.Add(gameObject);
-                if(oldValue ==2) NetworkRoomManagerExt.instance.team2.Remove(gameObject);
+                NetworkRoomManagerExt.Instance.team1.Add(gameObject);
+                if(oldValue ==2) NetworkRoomManagerExt.Instance.team2.Remove(gameObject);
             }
             else
             {
-                NetworkRoomManagerExt.instance.team2.Add(gameObject);
-                if(oldValue == 1) NetworkRoomManagerExt.instance.team1.Remove(gameObject);
+                NetworkRoomManagerExt.Instance.team2.Add(gameObject);
+                if(oldValue == 1) NetworkRoomManagerExt.Instance.team1.Remove(gameObject);
             }
         }
 
-        public void HandleUsernameChanged(string oldValue, string newValue) => LobbyDisplay.instance.UpdateDisplay();
-        public override void ReadyStateChanged(bool oldValue, bool newValue) => LobbyDisplay.instance.UpdateDisplay();
+        public void HandleUsernameChanged(string oldValue, string newValue) => LobbyDisplay.Instance.UpdateDisplay();
+        public override void ReadyStateChanged(bool oldValue, bool newValue) => LobbyDisplay.Instance.UpdateDisplay();
         public override void IndexChanged(int oldValue, int newValue) 
         {
             if (!hasAuthority) return;
@@ -62,9 +62,9 @@ namespace Cyberball.Network
 
         private void Awake()
         {
-            UiLobbySetup.instance.readyButton.onClick.AddListener(SetReadyToBegin);
-            UiLobbySetup.instance.changeTeam1.onClick.AddListener(ChangeTeam1);
-            UiLobbySetup.instance.changeTeam2.onClick.AddListener(ChangeTeam2);
+            UiLobbySetup.Instance.readyButton.onClick.AddListener(SetReadyToBegin);
+            UiLobbySetup.Instance.changeTeam1.onClick.AddListener(ChangeTeam1);
+            UiLobbySetup.Instance.changeTeam2.onClick.AddListener(ChangeTeam2);
         }
 
         #endregion
@@ -77,15 +77,15 @@ namespace Cyberball.Network
         }
 
         [Command]
-        private void setUsername(string _username)
+        private void SetUsername(string username)
         {
-            username = _username;
+            this.username = username;
         }
 
         [Command]
-        private void CmdsetTeamID(int _teamID)
+        private void CmdSetTeamID(int teamID)
         {
-            teamID = _teamID;
+            this.teamID = teamID;
         }
 
         #endregion
@@ -94,31 +94,31 @@ namespace Cyberball.Network
 
         private void AddToTeamWithLessMembers()
         {
-            int _team1Members = NetworkRoomManagerExt.instance.team1.Count;
-            int _team2Members = NetworkRoomManagerExt.instance.team2.Count;
+            int team1Members = NetworkRoomManagerExt.Instance.team1.Count;
+            int team2Members = NetworkRoomManagerExt.Instance.team2.Count;
 
-            int _teamID = 0;
-            if (_team1Members <= _team2Members)
+            int id;
+            if (team1Members <= team2Members)
             {
-                _teamID = 1;
-                
+                id = 1;
+            
             }
             else
             {
-                _teamID = 2;
+                id = 2;
             }
 
-           CmdsetTeamID(_teamID);
+            CmdSetTeamID(id);
         }
 
         private void ChangeTeam1()
         {
-            CmdsetTeamID(1);
+            CmdSetTeamID(1);
         }
-        
+    
         private void ChangeTeam2()
         {
-            CmdsetTeamID(2);
+            CmdSetTeamID(2);
         }
 
         #endregion
@@ -128,8 +128,8 @@ namespace Cyberball.Network
         public override void OnStartAuthority()
         {
             base.OnStartAuthority();
-            
-            setUsername(PlayerNameInput.DisplayName);
+        
+            SetUsername(PlayerNameInput.DisplayName);
             if (index == 0) IsLeader = true;
         }
 
@@ -142,15 +142,15 @@ namespace Cyberball.Network
         public override void OnClientEnterRoom()
         {
             base.OnClientEnterRoom();
-            
-            LobbyDisplay.instance.UpdateDisplay();
+        
+            LobbyDisplay.Instance.UpdateDisplay();
         }
 
         public override void OnClientExitRoom()
         {
             base.OnClientExitRoom();
 
-            LobbyDisplay.instance.UpdateDisplay();
+            LobbyDisplay.Instance.UpdateDisplay();
         }
         #endregion
     }

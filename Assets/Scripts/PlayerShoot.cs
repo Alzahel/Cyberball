@@ -1,5 +1,6 @@
-﻿using Cyberball.Managers;
+﻿using System;
 using Cyberball.Weapons;
+using Managers;
 using Mirror;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,8 +20,8 @@ public class PlayerShoot : NetworkBehaviour
 
     private bool shooting = false;
 
-    private const string PLAYER_TAG = "Player";
-    private const string PLAYER_HEAD_TAG = "PlayerHead";
+    private const string PlayerTag = "Player";
+    private const string PlayerHeadTag = "PlayerHead";
 
     public delegate void OnShoot();
     public event OnShoot Shot = delegate { };
@@ -52,25 +53,26 @@ public class PlayerShoot : NetworkBehaviour
 
     private void OnFire1(InputValue value)
     {
-        if (hasAuthority)
+        if (!hasAuthority) return;
+        
+        var isKeyPushed = Math.Abs(value.Get<float>()) >= 1;
+        
+        if (isKeyPushed)
         {
-            if (value.Get<float>() == 1)
+            //if it's a single shot weapon the player has to click again to trigger a new shoot, if it's not we set shooting to true and it will keep firing while
+            //the OnFire button keep pressed
+            if (!weapon.SingleShot)
             {
-                //if it's a single shot weapon the player has to click again to trigger a new shoot, if it's not we set shooting to true and it will keep firing while
-                //the OnFire button keep pressed
-                if (!weapon.SingleShot)
-                {
-                    shooting = true;
-                }
-                else Shoot();
+                shooting = true;
             }
-            else shooting = false;
+            else Shoot();
+        }
+        else shooting = false;
 
-            //cancel reload if shooting during reloading
-            if (weaponManager.IsReloading && value.Get<float>() == 1 && weaponManager.CurrentWeapon.RemainingAmmunitions > 0)
-            {
-                weaponManager.cancelReload();
-            }
+        //cancel reload if shooting during reloading
+        if (weaponManager.IsReloading && isKeyPushed && weaponManager.CurrentWeapon.RemainingAmmunitions > 0)
+        {
+            weaponManager.cancelReload();
         }
     }
 
@@ -99,22 +101,26 @@ public class PlayerShoot : NetworkBehaviour
             RaycastHit hit;
 
             //if we hit something
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.Range, hitLayerMask))
+            if (!Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, weapon.Range,
+                hitLayerMask)) return;
+            
+            var hitCollider = hit.collider;
+            var hitRootObject = hitCollider.transform.root;
+            var hitNetID = hitCollider.GetComponent<NetworkIdentity>().netId;
+                
+            if (hit.collider.CompareTag(PlayerHeadTag))
             {
-                if (hit.collider.CompareTag(PLAYER_HEAD_TAG))
-                {
-                    CmdPlayerShot(hit.collider.transform.root.GetComponent<NetworkIdentity>().netId, weapon.HeadShotDamages, netId);
-                    Debug.Log("headshot ! Hit on " + hit.collider.transform.root.name);
-                }
-                else if (hit.collider.CompareTag(PLAYER_TAG))
-                {
-                    CmdPlayerShot(hit.collider.GetComponent<NetworkIdentity>().netId, weapon.Damages, netId);
-                    Debug.Log("hit " + hit.collider.transform.root.name);
-                }
-                //call the Onhit method on the server when we hit a surface
-                Debug.Log("hit");
-                CmdOnHit(hit.point, hit.normal, hit.collider.tag);
+                CmdPlayerShot(hitNetID, weapon.HeadShotDamages, netId);
+                Debug.Log("headshot ! Hit on " + hitRootObject.name);
             }
+            else if (hit.collider.CompareTag(PlayerTag))
+            {
+                CmdPlayerShot(hitNetID, weapon.Damages, netId);
+                Debug.Log("hit " + hitRootObject.name);
+            }
+            //call the Onhit method on the server when we hit a surface
+            Debug.Log("hit");
+            CmdOnHit(hit.point, hit.normal, hitCollider.tag);
         }
     }
 
@@ -128,32 +134,32 @@ public class PlayerShoot : NetworkBehaviour
     [ClientRpc]
     private void RPCShotEffect()
     {
-        if (AudioManager.instance != null) AudioManager.instance.PlaySpatialSound("GunSound", transform.position);
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySpatialSound("GunSound", transform.position);
         weaponManager.CurrentGraphics.MuzzleFlash.Play();
     }
 
     //Is called on the server when a bullet hit something
     [Command]
-    private void CmdOnHit(Vector3 _pos, Vector3 _normal, string _hitTag)
+    private void CmdOnHit(Vector3 pos, Vector3 normal, string hitTag)
     {
-        RPCHitEffect(_pos, _normal, _hitTag);
+        RPCHitEffect(pos, normal, hitTag);
     }
 
     //is Call on all client to sawn the hit effect
     [ClientRpc]
-    private void RPCHitEffect(Vector3 _pos, Vector3 _normal, string _hitTag)
+    private void RPCHitEffect(Vector3 pos, Vector3 normal, string hitTag)
     {
         Debug.Log("hitEffect");
-        if (_hitTag == PLAYER_TAG) AudioManager.instance.PlaySound("BulletHit");
-        if (_hitTag == PLAYER_HEAD_TAG) AudioManager.instance.PlaySound("BulletCriticalHit");
-        GameObject _hitEffectIns = Instantiate(weaponManager.CurrentGraphics.HitEffectPrefab, _pos, Quaternion.LookRotation(_normal));
-        Destroy(_hitEffectIns, 2f);
+        if (hitTag == PlayerTag) AudioManager.Instance.PlaySound("BulletHit");
+        if (hitTag == PlayerHeadTag) AudioManager.Instance.PlaySound("BulletCriticalHit");
+        GameObject hitEffectIns = Instantiate(weaponManager.CurrentGraphics.HitEffectPrefab, pos, Quaternion.LookRotation(normal));
+        Destroy(hitEffectIns, 2f);
     }
 
     [Command]
-    void CmdPlayerShot(uint _damagedPlayerID, int _damage, uint _damageSourceID)
+    void CmdPlayerShot(uint damagedPlayerID, int damage, uint damageSourceID)
     {
-        Debug.Log(_damagedPlayerID + " has been shot.");
+        Debug.Log(damagedPlayerID + " has been shot.");
         //Player player = GameManager.GetPlayer(_damagedPlayerID);
         //player.RPCTakeDamage(_damage, _damageSourceID);
 

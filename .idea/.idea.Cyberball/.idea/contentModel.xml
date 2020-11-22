@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="csc.rsp" t="Include" />
         <e p="Enhanced Hierarchy" t="Include">
           <e p="Editor" t="Include">
             <e p="After.cs" t="Include" />

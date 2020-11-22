@@ -1,16 +1,16 @@
 ﻿using Mirror;
 using UnityEngine;
 
-namespace Cyberball.Health
+namespace Health
 {
     [RequireComponent(typeof(Health))]
     public class Damageable : NetworkBehaviour
     {
-        [SerializeField] private Health health = null;
+        [SerializeField] private Health health;
 
-        public void Damage(int _damageAmount)
+        public void Damage(int damageAmount)
         {
-            health.Remove(_damageAmount);
+            health.Remove(damageAmount);
         }
     }
 }

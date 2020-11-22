@@ -1,22 +1,19 @@
 ﻿using UnityEngine;
 
-namespace Cyberball
+public class UiMenuSetup : MonoBehaviour
 {
-    public class UiMenuSetup : MonoBehaviour
-    {
-        [SerializeField] private GameObject panelNameInput = null;
-        [SerializeField] private GameObject panelLandingPage = null;
-        [SerializeField] private GameObject panelEnterIpAddress = null;
-        [SerializeField] private GameObject panelLobby = null;
+    [SerializeField] private GameObject panelNameInput;
+    [SerializeField] private GameObject panelLandingPage;
+    [SerializeField] private GameObject panelEnterIpAddress;
+    [SerializeField] private GameObject panelLobby;
 
     
    
-        private void Awake()
-        {        
-            panelNameInput.SetActive(true);
-            panelLandingPage.SetActive(false);
-            panelEnterIpAddress.SetActive(false);
-            panelLobby.SetActive(false);
-        }
+    private void Awake()
+    {        
+        panelNameInput.SetActive(true);
+        panelLandingPage.SetActive(false);
+        panelEnterIpAddress.SetActive(false);
+        panelLobby.SetActive(false);
     }
 }

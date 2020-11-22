@@ -1,27 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Cyberball.Network;
 using Cyberball.Spawn;
 using Mirror;
+using Network;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Cyberball.Managers
+namespace Managers
 {
     class GameManager : NetworkBehaviour
     {
-        public static GameManager instance;
+        public static GameManager Instance;
 
         [SerializeField] private List<NetworkGamePlayer> players = new List<NetworkGamePlayer>();
 
-        public List<NetworkGamePlayer> Players { get => players; set => players = value; }
-        public bool IsRoundOver { get => isRoundOver; set => isRoundOver = value; }
+        public List<NetworkGamePlayer> Players => players;
+        private bool IsRoundOver { get; set; }
 
         #region Unity Callbacks
 
         private void Awake()
         {
-            if (instance == null) instance = this;
+            if (Instance == null) Instance = this;
         }
 
         private void Start()
@@ -34,7 +34,7 @@ namespace Cyberball.Managers
         {
             if (SceneManager.GetActiveScene().name.StartsWith("Scene_Map"))
                 if (!allPlayersLoaded) AllPlayersLoadedCheck();
-                else if (isRoundOver || currentRound == 0) StartNewRound();
+                else if (IsRoundOver || currentRound == 0) StartNewRound();
                  
         }
 
@@ -42,22 +42,19 @@ namespace Cyberball.Managers
 
         #region Start Game & Rounds management
 
-        private bool allPlayersLoaded = false;
-        private bool isRoundOver = false;
-        private int currentRound = 0;
+        private bool allPlayersLoaded;
+        private int currentRound;
   
         [Server]
-        private bool AllPlayersLoadedCheck()
+        private void AllPlayersLoadedCheck()
         {
             Debug.Log("waiting for players to load");
 
             allPlayersLoaded = true;
-            foreach (NetworkGamePlayer player in players)
+            foreach (var player in players)
             {
                 if (!player.HasLoaded) allPlayersLoaded = false;
             }
-
-            return allPlayersLoaded;
         }
 
         [Server]
@@ -65,7 +62,7 @@ namespace Cyberball.Managers
         {
             Debug.Log("New round setup");
 
-            isRoundOver = false;
+            IsRoundOver = false;
             currentRound++;
 
             StartCoroutine(StartRound());
@@ -90,12 +87,12 @@ namespace Cyberball.Managers
         [Server]
         public void ScoreGoal(int teamID)
         {
-            if (isRoundOver) return;
+            if (IsRoundOver) return;
 
             if (teamID == 1) team1Score++;
             else team2Score++;
 
-            isRoundOver = true;
+            IsRoundOver = true;
             
             //StartCoroutine(ResetAfterGoal());
 

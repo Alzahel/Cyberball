@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Cyberball.Managers;
-using Cyberball.Network;
+using Managers;
 using Mirror;
+using Network;
 using UnityEngine;
 
 namespace Cyberball.Spawn
@@ -33,7 +33,7 @@ namespace Cyberball.Spawn
 
         public void SpawnAllPlayers()
         {
-            foreach (NetworkGamePlayer player in GameManager.instance.Players)
+            foreach (NetworkGamePlayer player in GameManager.Instance.Players)
             {
                 SpawnPlayer(player.GetComponent<NetworkIdentity>().connectionToClient);
             }

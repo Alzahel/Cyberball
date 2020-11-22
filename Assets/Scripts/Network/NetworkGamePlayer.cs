@@ -1,7 +1,7 @@
-﻿using Cyberball.Managers;
+﻿using Managers;
 using Mirror;
 
-namespace Cyberball.Network
+namespace Network
 {
     public class NetworkGamePlayer : NetworkBehaviour
     {
@@ -20,7 +20,7 @@ namespace Cyberball.Network
 
         #region Loading game
 
-        [SyncVar] private bool hasLoaded = false;
+        [SyncVar] private bool hasLoaded;
 
         public bool HasLoaded { get => hasLoaded; set => hasLoaded = value; }
 
@@ -29,7 +29,7 @@ namespace Cyberball.Network
         {
             base.OnStartServer();
 
-            GameManager.instance.Players.Add(this);
+            GameManager.Instance.Players.Add(this);
         }
 
         #endregion

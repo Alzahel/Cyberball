@@ -1,56 +1,53 @@
-﻿using Cyberball.Network;
-using Mirror;
+﻿using Mirror;
+using Network;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cyberball
+public class JoinRoomAsClient : MonoBehaviour
 {
-    public class JoinRoomAsClient : MonoBehaviour
+    [SerializeField] private NetworkRoomManager networkManager;
+    
+    [Header("UI")]
+    [SerializeField] private GameObject enterIpAddressPanel;
+    [SerializeField] private GameObject lobbyPanel;
+    [SerializeField] private TMP_InputField ipAddressInputField;
+    [SerializeField] private Button joinButton;
+
+    private void OnEnable()
     {
-        [SerializeField] private NetworkRoomManager networkManager = null;
+        NetworkRoomManagerExt.OnClientConnected += HandleClientConnected;
+        NetworkRoomManagerExt.OnClientDisconnected += HandleClientDisconnected;
+    }
+    private void OnDisable()
+    {
+        NetworkRoomManagerExt.OnClientConnected -= HandleClientConnected;
+        NetworkRoomManagerExt.OnClientDisconnected -= HandleClientDisconnected;
+    }
 
-        [Header("UI")]
-        [SerializeField] private GameObject enterIpAddressPannel = null;
-        [SerializeField] private GameObject lobbyPanel = null;
-        [SerializeField] private TMP_InputField ipAddressInputField = null;
-        [SerializeField] private Button joinButton = null;
+    public void JoinRoom()
+    {
+        string ipAddress = ipAddressInputField.text;
 
-          private void OnEnable()
-          {
-              NetworkRoomManagerExt.OnClientConnected += HandleClientConnected;
-              NetworkRoomManagerExt.OnClientDisconnected += HandleClientDisconnected;
-          }
-          private void OnDisable()
-          {
-              NetworkRoomManagerExt.OnClientConnected -= HandleClientConnected;
-              NetworkRoomManagerExt.OnClientDisconnected -= HandleClientDisconnected;
-          }
+        networkManager.networkAddress = ipAddress;
+        networkManager.StartClient();
 
-        public void JoinRoom()
-        {
-            string ipAddress = ipAddressInputField.text;
+        joinButton.interactable = false;
+    }
 
-            networkManager.networkAddress = ipAddress;
-            networkManager.StartClient();
+    //If the connection is successful we switch to lobby Panel
+    private void HandleClientConnected()
+    {
+        enterIpAddressPanel.SetActive(false);
+        lobbyPanel.SetActive(true);
+    }
 
-            joinButton.interactable = false;
-        }
+    //If the connection isn't successful or the player leaves the room we come back to the enter ip panel
+    private void HandleClientDisconnected()
+    {
+        joinButton.interactable = true;
 
-        //If the connection is succesfull we switch to lobby Pannel
-        private void HandleClientConnected()
-        {
-            enterIpAddressPannel.SetActive(false);
-            lobbyPanel.SetActive(true);
-        }
-
-        //If the connection isn't succesfull or the player leaves the room we come back to the enter ip pannel
-        private void HandleClientDisconnected()
-        {
-            joinButton.interactable = true;
-
-            lobbyPanel.SetActive(false);
-            enterIpAddressPannel.SetActive(true);
-        }
+        lobbyPanel.SetActive(false);
+        enterIpAddressPanel.SetActive(true);
     }
 }

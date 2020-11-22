@@ -1,25 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Cyberball
+class UiLobbySetup : MonoBehaviour
 {
-    class UiLobbySetup : MonoBehaviour
+    [SerializeField] public Button startButton;
+    [SerializeField] public Button changeTeam1;
+    [SerializeField] public Button changeTeam2;
+    [SerializeField] public Button readyButton;
+
+    public static UiLobbySetup Instance;
+
+    private void Awake()
     {
-        [SerializeField] public Button startButton = null;
-        [SerializeField] public Button changeTeam1 = null;
-        [SerializeField] public Button changeTeam2 = null;
-        [SerializeField] public Button readyButton = null;
+        if (Instance == null) Instance = this;
 
-        public static UiLobbySetup instance = null;
-
-        private void Awake()
-        {
-            if (instance == null) instance = this;
-
-            startButton.gameObject.SetActive(false);
-            startButton.interactable = false;
-        }
-
-
+        startButton.gameObject.SetActive(false);
+        startButton.interactable = false;
     }
+
+
 }

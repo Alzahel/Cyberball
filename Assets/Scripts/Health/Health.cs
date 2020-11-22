@@ -1,14 +1,14 @@
 ﻿using Mirror;
 using UnityEngine;
 
-namespace Cyberball.Health
+namespace Health
 {
     public class Health : NetworkBehaviour
     {
         [SerializeField] private int maxHealth = 100;
 
         [SyncVar(hook = nameof(HandleHealthChanged))]
-        private int health = 0;
+        private int health;
 
         //public static event EventHandler<DeathEventArgs> OnDeath;
         //public event EventHandler<HealthChangedEventArgs> OnHealthchanged;
