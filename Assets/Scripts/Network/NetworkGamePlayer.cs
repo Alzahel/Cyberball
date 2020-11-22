@@ -1,9 +1,7 @@
-﻿using Mirror;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Cyberball.Managers;
+using Mirror;
 
-namespace Assets.Scripts
+namespace Cyberball.Network
 {
     public class NetworkGamePlayer : NetworkBehaviour
     {

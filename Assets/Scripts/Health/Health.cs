@@ -1,71 +1,73 @@
 ﻿using Mirror;
-using System;
 using UnityEngine;
 
-public class Health : NetworkBehaviour
+namespace Cyberball.Health
 {
-    [SerializeField] private int maxHealth = 100;
-
-    [SyncVar(hook = nameof(HandleHealthChanged))]
-    private int health = 0;
-
-    //public static event EventHandler<DeathEventArgs> OnDeath;
-    //public event EventHandler<HealthChangedEventArgs> OnHealthchanged;
-
-    public bool IsDead => health == 0;
-
-    public override void OnStartServer()
+    public class Health : NetworkBehaviour
     {
-        ResetHealth();
-    }
+        [SerializeField] private int maxHealth = 100;
 
-    public void ResetHealth()
-    {
-        health = maxHealth;
-    }
+        [SyncVar(hook = nameof(HandleHealthChanged))]
+        private int health = 0;
 
-    [ServerCallback]
+        //public static event EventHandler<DeathEventArgs> OnDeath;
+        //public event EventHandler<HealthChangedEventArgs> OnHealthchanged;
 
-    private void OnDestroy()
-    {
-        //OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
-    }
+        public bool IsDead => health == 0;
 
-    [Server]
-    public void Add(int value)
-    {
-        value = Mathf.Max(value, 0);
+        public override void OnStartServer()
+        {
+            ResetHealth();
+        }
 
-        health = Mathf.Min(health + value, maxHealth);
-    }
-    
-    [Server]
-    public void Remove(int value)
-    {
-        value = Mathf.Max(value, 0);
+        public void ResetHealth()
+        {
+            health = maxHealth;
+        }
 
-        health = Mathf.Max(health - value, 0);
+        [ServerCallback]
 
-        if (health <= 0)
+        private void OnDestroy()
         {
             //OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
+        }
 
-            RPCHandleDeath();
-        } 
-    }
+        [Server]
+        public void Add(int value)
+        {
+            value = Mathf.Max(value, 0);
 
-    private void HandleHealthChanged(int oldValue, int newValue)
-    {
-        /*OnHealthchanged?.Invoke(this, new HealthChangedEventArgs
+            health = Mathf.Min(health + value, maxHealth);
+        }
+    
+        [Server]
+        public void Remove(int value)
+        {
+            value = Mathf.Max(value, 0);
+
+            health = Mathf.Max(health - value, 0);
+
+            if (health <= 0)
+            {
+                //OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
+
+                RPCHandleDeath();
+            } 
+        }
+
+        private void HandleHealthChanged(int oldValue, int newValue)
+        {
+            /*OnHealthchanged?.Invoke(this, new HealthChangedEventArgs
         {
             Health = health,
             MaxHealth = maxHealth
         });*/
-    }
+        }
 
-    [ClientRpc]
-    private void RPCHandleDeath()
-    {
-    gameObject.SetActive(false);
+        [ClientRpc]
+        private void RPCHandleDeath()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

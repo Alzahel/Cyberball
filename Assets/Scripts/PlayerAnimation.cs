@@ -1,30 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Mirror;
 using UnityEngine;
-using Mirror;
 
-[RequireComponent(typeof(PlayerMovement))]
-public class PlayerAnimation : NetworkBehaviour
+namespace Cyberball
 {
-    private Animator anim;
-    private PlayerMovement movement;
-
-    void Awake()
+    [RequireComponent(typeof(PlayerMovement))]
+    public class PlayerAnimation : NetworkBehaviour
     {
-        anim = GetComponent<Animator>();
-        movement = GetComponent<PlayerMovement>();
-    }
+        private Animator anim;
+        private PlayerMovement movement;
+        
+        private static readonly int IsSprinting = Animator.StringToHash("isSprinting");
+        private static readonly int IsCrouching = Animator.StringToHash("isCrouching");
+        private static readonly int Y = Animator.StringToHash("y");
+        private static readonly int X = Animator.StringToHash("x");
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (hasAuthority)
+        void Awake()
         {
-            anim.SetFloat("x", movement.Horizontal, 0, Time.deltaTime);
-            anim.SetFloat("y", movement.Vertical, 0, Time.deltaTime);
-            anim.SetBool("isSprinting", movement.IsSprinting);
-            anim.SetBool("isCrouching", movement.IsCrouching);
+            anim = GetComponent<Animator>();
+            movement = GetComponent<PlayerMovement>();
         }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (hasAuthority)
+            {
+                anim.SetFloat(X, movement.Horizontal, 0, Time.deltaTime);
+                anim.SetFloat(Y, movement.Vertical, 0, Time.deltaTime);
+                anim.SetBool(IsSprinting, movement.IsSprinting);
+                anim.SetBool(IsCrouching, movement.IsCrouching);
+            }
        
+        }
     }
 }

@@ -1,9 +1,9 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using Cyberball.Network;
 using Mirror;
-using Assets.Scripts.Network;
+using TMPro;
+using UnityEngine;
 
-namespace Assets.Scripts
+namespace Cyberball
 {
     public class LobbyDisplay : MonoBehaviour
     {

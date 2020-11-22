@@ -1,9 +1,9 @@
-﻿using Mirror;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
+using Cyberball.Managers;
+using Mirror;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Cyberball.Weapons
 { 
     public class WeaponManager : NetworkBehaviour
     {

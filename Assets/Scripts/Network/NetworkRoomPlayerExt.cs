@@ -1,9 +1,7 @@
-﻿using Assets.Scripts.Network;
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Cyberball.Network
 {
     public class NetworkRoomPlayerExt : NetworkRoomPlayer
     {
@@ -12,8 +10,7 @@ namespace Assets.Scripts
         [SyncVar(hook = nameof(HandleUsernameChanged))] private string username;
         [SyncVar(hook = nameof(HandleTeamChanged))] private int teamID;
 
-        [SerializeField]
-        private bool isLeader;
+        [SerializeField] private bool isLeader;
         #endregion
 
         #region Properties

@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using Cyberball.Managers;
+using Cyberball.Network;
 using Mirror;
-using System.Linq;
-using System;
-using Assets.Scripts;
+using UnityEngine;
 
-namespace Assets.Scripts
+namespace Cyberball.Spawn
 {
     public class PlayerSpawnSystem : NetworkBehaviour
     {

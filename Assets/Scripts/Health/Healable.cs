@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Health))]
-public class Healable : MonoBehaviour
+namespace Cyberball.Health
 {
-    private Health health = null;
-
-    private void Awake()
+    [RequireComponent(typeof(Health))]
+    public class Healable : MonoBehaviour
     {
-        health = GetComponent<Health>();
-    }
+        private Health health = null;
 
-    public void Heal(int _healAmount)
-    {
-        health.Remove(_healAmount);
+        private void Awake()
+        {
+            health = GetComponent<Health>();
+        }
+
+        public void Heal(int _healAmount)
+        {
+            health.Remove(_healAmount);
+        }
     }
 }

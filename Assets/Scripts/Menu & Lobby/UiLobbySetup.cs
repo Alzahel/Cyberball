@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Cyberball
 {
     class UiLobbySetup : MonoBehaviour
     {

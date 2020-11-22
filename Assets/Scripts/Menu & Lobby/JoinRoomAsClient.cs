@@ -1,10 +1,10 @@
-﻿using Assets.Scripts.Network;
+﻿using Cyberball.Network;
 using Mirror;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Cyberball
 {
     public class JoinRoomAsClient : MonoBehaviour
     {

@@ -1,11 +1,12 @@
-﻿using Mirror;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cyberball.Spawn;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Network
+namespace Cyberball.Network
 {
     public class NetworkRoomManagerExt : NetworkRoomManager
     {

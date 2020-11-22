@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Mirror;
+﻿using UnityEngine;
 
-public class Goal :Mirror.NetworkBehaviour
+namespace Cyberball
 {
-    [SerializeField]
-    private int goalTeamID;
+    public class Goal :Mirror.NetworkBehaviour
+    {
+        [SerializeField]
+        private int goalTeamID;
 
-    public int GoalTeamID { get => goalTeamID; set => goalTeamID = value; }
+        public int GoalTeamID { get => goalTeamID; set => goalTeamID = value; }
+    }
 }

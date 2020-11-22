@@ -1,81 +1,90 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using Cyberball;
+using Cyberball.Managers;
+using Cyberball.Network;
+using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Assets.Scripts
+public class Ball : MonoBehaviour
 {
-    public class Ball : MonoBehaviour
+    [SerializeField] private Transform spawnPosition;
+    [SerializeField] private float onPlayerPosition = 3;
+        
+    private NetworkGamePlayer player;
+    private bool isBallCarried;
+
+    private Transform ballTransform;
+    private Vector3 ballPosition;
+
+    private void Awake()
     {
-        [SerializeField] Transform spawnPosition;
-        Vector3 position;
-        [SerializeField] private float onPlayerPosition = 3;
+        ballTransform = transform;
+        ballPosition = ballTransform.position;
+    }
 
-        private NetworkGamePlayer player;
+    private void Start()
+    {
+        ResetBall();
+    }
 
-        private bool isCarried;
-
-        void Start()
+    private void Update()
+    {
+        if (player != null && player.IsDead) DropBall();
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        Debug.Log("Player " + col.name + "took the ball !");
+        //take the Ball
+        if (col.CompareTag("Player"))
         {
-            position = transform.position;
+            CatchBall(col);
+        }
+
+        if (col.CompareTag($"Goal") && col.GetComponent<Goal>().GoalTeamID != player.TeamID) 
+        { 
+            GameManager.instance.ScoreGoal(player.TeamID);
             ResetBall();
         }
+    }
 
-        private void Update()
-        {
-            if (player != null && player.IsDead) DropBall();
-        }
-        void OnTriggerEnter(Collider col)
-        {
-            Debug.Log("Player " + col.name + "took the ball !");
-            //take the Ball
-            if (col.tag == "Player")
-            {
-                CatchBall(col);
-            }
+    private void CatchBall(Collider col)
+    {
+        if (isBallCarried) return;
+        else isBallCarried = true;
+            
+        Debug.Log("Player " + col.name + "took the ball !");
 
-            if (col.tag == "Goal" && col.GetComponent<Goal>().GoalTeamID != player.TeamID) 
-            { 
-                GameManager.instance.ScoreGoal(player.TeamID);
-                ResetBall();
-            }
-        }
+        player = col.GetComponent<NetworkGamePlayer>();
 
-        private void OnDropBall()
-        {
-            if (Input.GetButtonDown("dropBall")) DropBall();
-        }
+        var colTransform = col.transform;
+        var colPosition = colTransform.position;
 
-        private void CatchBall(Collider col)
-        {
-            if (isCarried) return;
+        ballPosition = new Vector3(colPosition.x, colPosition.y + onPlayerPosition, colPosition.z);
+            
+        ballTransform.SetParent(colTransform);
+        ballTransform.position = ballPosition;
+    }
 
-            Debug.Log("Player " + col.name + "took the ball !");
+    private void DropBall()
+    {
+        isBallCarried = false;
+        Debug.Log("The ball has been dropped !");
+        ballPosition = new Vector3(ballPosition.x, ballPosition.y - onPlayerPosition, ballPosition.z + 1);
+           
+        ballTransform.parent = null;
+        ballTransform.position = ballPosition;
 
-            player = col.GetComponent<NetworkGamePlayer>();
-            isCarried = true;
+        player = null;
+    }      
 
-            transform.SetParent(col.transform);
-            position = new Vector3(col.transform.position.x, col.transform.position.y + onPlayerPosition, col.transform.position.z);
-            transform.position = position;
-        }
-
-        private void DropBall()
-        {
-            isCarried = false;
-            Debug.Log("The ball has been droped !");
-            position = new Vector3(transform.position.x, transform.position.y - onPlayerPosition, transform.position.z + 1);
-            transform.parent = null;
-
-            transform.position = position;
-
-            player = null;
-        }      
-
-        private void ResetBall()
-        {
-            DropBall();
-            transform.position = spawnPosition.position;
-        }
+    private void ResetBall()
+    {
+        DropBall();
+        transform.position = spawnPosition.position;
+    }
+        
+    [UsedImplicitly]
+    private void OnDropBall()
+    {
+        if (Input.GetButtonDown($"dropBall")) DropBall();
     }
 }

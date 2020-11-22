@@ -1,8 +1,11 @@
-﻿[System.Serializable]
-public class MatchSettings
+﻿namespace Cyberball
 {
-    public int numberOfTeams = 2;
-    public float RespawnTime = 3f;
-    public float MatchDuration = 5f;
-    public int KillObjective = 20;
+    [System.Serializable]
+    public class MatchSettings
+    {
+        public int numberOfTeams = 2;
+        public float RespawnTime = 3f;
+        public float MatchDuration = 5f;
+        public int KillObjective = 20;
+    }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using TMPro;
-using UnityEditor;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts
+namespace Cyberball
 {
 
     /// <summary>
