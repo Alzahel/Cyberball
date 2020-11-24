@@ -135,30 +135,28 @@ public class PlayerShoot : NetworkBehaviour
     private void OnHit(RaycastHit hit)
     {
         var hitCollider = hit.collider;
-        var hitRootObject = hitCollider.transform.root;
+        var hitRootObject = hitCollider.transform.root.gameObject;
         
         Hit?.Invoke(this, new OnHitEventArgs{Position = hit.point, HitTag = hitCollider.tag, HitNormal = hit.normal});
         
         if (hitCollider.gameObject.layer!= LayerMask.NameToLayer($"Player")) return;
-            
-        var hitNetID = hitCollider.GetComponent<NetworkIdentity>().netId;
-                
+
         if (hit.collider.CompareTag(GameManager.PlayerHeadTag))
         {
-            CmdPlayerShot(hitCollider.gameObject, hitNetID, weapon.HeadShotDamages, netId);
+            CmdPlayerShot(hitRootObject, weapon.HeadShotDamages);
             Debug.Log("headshot ! Hit on " + hitRootObject.name);
         }
         else if (hit.collider.CompareTag(GameManager.PlayerTag))
         {
-            CmdPlayerShot(hitCollider.gameObject, hitNetID, weapon.Damages, netId);
+            CmdPlayerShot(hitRootObject, weapon.Damages);
             Debug.Log("hit " + hitRootObject.name);
         }
     }
 
     [Command]
-    void CmdPlayerShot(GameObject hitGameObject, uint damagedPlayerID, int damage, uint damageSourceID)
+    void CmdPlayerShot(GameObject hitGameObject, int damage)
     {
-        Debug.Log(damagedPlayerID + " has been shot.");
+        Debug.Log(hitGameObject.name + " has been shot.");
         
         hitGameObject.GetComponent<Damageable>().Damage(damage);
         

@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using System;
+using Managers;
 using Mirror;
 using UnityEngine;
 
@@ -10,11 +11,15 @@ namespace Network
         #region player Datas
 
         [SyncVar] private string username;
-        [SyncVar] private int teamID;
-
-        [SerializeField] private GameObject hud;
+        [SyncVar] public int teamID;
         
+        //score
+        [SyncVar] private int kills;
+        [SyncVar] private int deaths;
+
         private bool isDead;
+
+        public event EventHandler OnAuthorityChanged;
 
         public int TeamID { get => teamID; set => teamID = value; }
         public string Username { get =>username; set => username = value; }
@@ -36,9 +41,18 @@ namespace Network
             GameManager.Instance.Players.Add(this);
         }
 
-        public override void OnStartClient()
+        #endregion
+
+        #region Authority
+
+        public override void OnStartAuthority()
         {
-            hud.SetActive(hasAuthority);
+            OnAuthorityChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        public override void OnStopAuthority()
+        {
+            OnAuthorityChanged?.Invoke(this, EventArgs.Empty);
         }
 
         #endregion

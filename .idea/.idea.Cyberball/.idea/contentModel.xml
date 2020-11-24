@@ -615,6 +615,7 @@
           <e p="PlayerEnergy.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerShoot.cs" t="Include" />
+          <e p="PlayerUISetup.cs" t="Include" />
           <e p="PlayerVisualEffects.cs" t="Include" />
           <e p="Spawn" t="Include">
             <e p="PlayerSpawnPoint.cs" t="Include" />
@@ -622,10 +623,11 @@
           </e>
           <e p="UI" t="Include">
             <e p="EnergyBar.cs" t="Include" />
-            <e p="LifeBar.cs" t="Include" />
+            <e p="HealthBar.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="BarFill.cs" t="Include" />
+            <e p="CameraFacingObject.cs" t="Include" />
             <e p="SetLayerRecursively.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
