@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Cyberball.Utils
+namespace Utils
 {
     public class SetLayerRecursively
     {

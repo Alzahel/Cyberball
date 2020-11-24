@@ -1,32 +1,31 @@
 ﻿using System.Collections;
+using Cyberball.Weapons;
 using Managers;
 using Mirror;
 using UnityEngine;
+using Utils;
 
-namespace Cyberball.Weapons
+namespace Weapons
 { 
     public class WeaponManager : NetworkBehaviour
     {
-        private string weaponLayerName = "Weapon";
+        private const string WeaponLayerName = "Weapon";
 
-        [SerializeField]
-        private Transform weaponHolderRightHand = null;
-        [SerializeField]
-        private Transform weaponHolderLeftHand = null;
+        [SerializeField] private Transform weaponHolderRightHand;
+        [SerializeField] private Transform weaponHolderLeftHand;
         private Transform weaponHolder;
 
-        [SerializeField]
-        private PlayerWeapon primaryWeapon = null;
+        [SerializeField] private PlayerWeapon primaryWeapon;
         private PlayerWeapon secondaryWeapon;
 
         private PlayerWeapon currentWeapon;
         private WeaponGraphics currentGraphics;
 
-        private bool isReloading = false;
+        private bool isReloading;
 
         private Coroutine reloadCoroutine;
 
-        GameObject _weaponIns;
+        GameObject weaponIns;
 
         public PlayerWeapon CurrentWeapon { get => currentWeapon; }
         public WeaponGraphics CurrentGraphics { get => currentGraphics; }
@@ -35,22 +34,22 @@ namespace Cyberball.Weapons
         // Start is called before the first frame update
         void Start()
         {
-            EquiWeapon(primaryWeapon);
+            EquipWeapon(primaryWeapon);
         }
 
-        private void EquiWeapon(PlayerWeapon _weapon)
+        private void EquipWeapon(PlayerWeapon weapon)
         {
-            currentWeapon = _weapon;
-            if (_weapon.IsRightHand) weaponHolder = weaponHolderRightHand;
+            currentWeapon = weapon;
+            if (weapon.IsRightHand) weaponHolder = weaponHolderRightHand;
             else weaponHolder = weaponHolderLeftHand;
 
-            _weaponIns = Instantiate(_weapon.Graphics, weaponHolder.position, _weapon.Graphics.transform.rotation);
-            currentGraphics = _weaponIns.GetComponent<WeaponGraphics>();
-            _weaponIns.transform.SetParent(weaponHolder, true);
+            weaponIns = Instantiate(weapon.Graphics, weaponHolder.position, weapon.Graphics.transform.rotation);
+            currentGraphics = weaponIns.GetComponent<WeaponGraphics>();
+            weaponIns.transform.SetParent(weaponHolder, true);
 
-            if (currentGraphics == null) Debug.LogError("No weapon graphics components on the object " + _weaponIns.name);
+            if (currentGraphics == null) Debug.LogError("No weapon graphics components on the object " + weaponIns.name);
 
-            if (hasAuthority) Utils.SetLayerRecursively.setLayer(_weaponIns, LayerMask.NameToLayer(weaponLayerName));
+            if (hasAuthority) SetLayerRecursively.setLayer(weaponIns, LayerMask.NameToLayer(WeaponLayerName));
         }
 
         public void Reload()
@@ -59,7 +58,7 @@ namespace Cyberball.Weapons
             reloadCoroutine = StartCoroutine(Reloading());
         }
 
-        public void cancelReload()
+        public void CancelReload()
         {
             IsReloading = false;
             StopCoroutine(reloadCoroutine);

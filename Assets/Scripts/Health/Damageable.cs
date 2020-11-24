@@ -1,12 +1,18 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using UnityEngine;
 
 namespace Health
 {
-    [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(HealthSystem))]
     public class Damageable : NetworkBehaviour
     {
-        [SerializeField] private Health health;
+        private HealthSystem health;
+
+        private void Awake()
+        {
+            health = GetComponent<HealthSystem>();
+        }
 
         public void Damage(int damageAmount)
         {

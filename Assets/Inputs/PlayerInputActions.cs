@@ -27,7 +27,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""MoveInput"",
                     ""type"": ""Value"",
                     ""id"": ""803d21d4-e7ce-439a-8dd1-afb86343cd9b"",
                     ""expectedControlType"": ""Vector2"",
@@ -35,7 +35,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""JumpInput"",
                     ""type"": ""Value"",
                     ""id"": ""ecef1674-c3b8-4a2f-b2f4-38096f9039d1"",
                     ""expectedControlType"": """",
@@ -43,7 +43,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(behavior=2)""
                 },
                 {
-                    ""name"": ""Sprint"",
+                    ""name"": ""SprintInput"",
                     ""type"": ""Button"",
                     ""id"": ""d3b4b11f-1fca-4017-929f-a86aed0a0f51"",
                     ""expectedControlType"": ""Button"",
@@ -83,7 +83,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Crouch"",
+                    ""name"": ""CrouchInput"",
                     ""type"": ""Value"",
                     ""id"": ""f820c198-50c1-4dfa-b7f7-b80c45d4c37a"",
                     ""expectedControlType"": """",
@@ -107,7 +107,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -118,7 +118,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -129,7 +129,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -140,7 +140,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -151,7 +151,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -162,7 +162,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Jump"",
+                    ""action"": ""JumpInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -184,7 +184,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Sprint"",
+                    ""action"": ""SprintInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -239,7 +239,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Crouch"",
+                    ""action"": ""CrouchInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -279,14 +279,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_MoveInput = m_Player.FindAction("MoveInput", throwIfNotFound: true);
+        m_Player_JumpInput = m_Player.FindAction("JumpInput", throwIfNotFound: true);
+        m_Player_SprintInput = m_Player.FindAction("SprintInput", throwIfNotFound: true);
         m_Player_Fire1 = m_Player.FindAction("Fire1", throwIfNotFound: true);
         m_Player_Settings = m_Player.FindAction("Settings", throwIfNotFound: true);
         m_Player_Scoreboard = m_Player.FindAction("Scoreboard", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
-        m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
+        m_Player_CrouchInput = m_Player.FindAction("CrouchInput", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
     }
 
@@ -338,28 +338,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_MoveInput;
+    private readonly InputAction m_Player_JumpInput;
+    private readonly InputAction m_Player_SprintInput;
     private readonly InputAction m_Player_Fire1;
     private readonly InputAction m_Player_Settings;
     private readonly InputAction m_Player_Scoreboard;
     private readonly InputAction m_Player_Reload;
-    private readonly InputAction m_Player_Crouch;
+    private readonly InputAction m_Player_CrouchInput;
     private readonly InputAction m_Player_Aim;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_Player_Look;
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @MoveInput => m_Wrapper.m_Player_MoveInput;
+        public InputAction @JumpInput => m_Wrapper.m_Player_JumpInput;
+        public InputAction @SprintInput => m_Wrapper.m_Player_SprintInput;
         public InputAction @Fire1 => m_Wrapper.m_Player_Fire1;
         public InputAction @Settings => m_Wrapper.m_Player_Settings;
         public InputAction @Scoreboard => m_Wrapper.m_Player_Scoreboard;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
-        public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
+        public InputAction @CrouchInput => m_Wrapper.m_Player_CrouchInput;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -373,15 +373,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Look.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
                 @Look.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook;
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
-                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @MoveInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveInput;
+                @MoveInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveInput;
+                @MoveInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveInput;
+                @JumpInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpInput;
+                @JumpInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpInput;
+                @JumpInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpInput;
+                @SprintInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintInput;
+                @SprintInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintInput;
+                @SprintInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintInput;
                 @Fire1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
                 @Fire1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
                 @Fire1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFire1;
@@ -394,9 +394,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
-                @Crouch.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
-                @Crouch.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
-                @Crouch.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouch;
+                @CrouchInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouchInput;
+                @CrouchInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouchInput;
+                @CrouchInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouchInput;
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
@@ -407,15 +407,15 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
-                @Sprint.started += instance.OnSprint;
-                @Sprint.performed += instance.OnSprint;
-                @Sprint.canceled += instance.OnSprint;
+                @MoveInput.started += instance.OnMoveInput;
+                @MoveInput.performed += instance.OnMoveInput;
+                @MoveInput.canceled += instance.OnMoveInput;
+                @JumpInput.started += instance.OnJumpInput;
+                @JumpInput.performed += instance.OnJumpInput;
+                @JumpInput.canceled += instance.OnJumpInput;
+                @SprintInput.started += instance.OnSprintInput;
+                @SprintInput.performed += instance.OnSprintInput;
+                @SprintInput.canceled += instance.OnSprintInput;
                 @Fire1.started += instance.OnFire1;
                 @Fire1.performed += instance.OnFire1;
                 @Fire1.canceled += instance.OnFire1;
@@ -428,9 +428,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
-                @Crouch.started += instance.OnCrouch;
-                @Crouch.performed += instance.OnCrouch;
-                @Crouch.canceled += instance.OnCrouch;
+                @CrouchInput.started += instance.OnCrouchInput;
+                @CrouchInput.performed += instance.OnCrouchInput;
+                @CrouchInput.canceled += instance.OnCrouchInput;
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
@@ -450,14 +450,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnLook(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnSprint(InputAction.CallbackContext context);
+        void OnMoveInput(InputAction.CallbackContext context);
+        void OnJumpInput(InputAction.CallbackContext context);
+        void OnSprintInput(InputAction.CallbackContext context);
         void OnFire1(InputAction.CallbackContext context);
         void OnSettings(InputAction.CallbackContext context);
         void OnScoreboard(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
-        void OnCrouch(InputAction.CallbackContext context);
+        void OnCrouchInput(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
     }
 }

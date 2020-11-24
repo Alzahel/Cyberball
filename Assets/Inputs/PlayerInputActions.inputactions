@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Move",
+                    "name": "MoveInput",
                     "type": "Value",
                     "id": "803d21d4-e7ce-439a-8dd1-afb86343cd9b",
                     "expectedControlType": "Vector2",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "JumpInput",
                     "type": "Value",
                     "id": "ecef1674-c3b8-4a2f-b2f4-38096f9039d1",
                     "expectedControlType": "",
@@ -30,7 +30,7 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Sprint",
+                    "name": "SprintInput",
                     "type": "Button",
                     "id": "d3b4b11f-1fca-4017-929f-a86aed0a0f51",
                     "expectedControlType": "Button",
@@ -70,7 +70,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Crouch",
+                    "name": "CrouchInput",
                     "type": "Value",
                     "id": "f820c198-50c1-4dfa-b7f7-b80c45d4c37a",
                     "expectedControlType": "",
@@ -94,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "MoveInput",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -105,7 +105,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Move",
+                    "action": "MoveInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -116,7 +116,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Move",
+                    "action": "MoveInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -127,7 +127,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Move",
+                    "action": "MoveInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -138,7 +138,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Move",
+                    "action": "MoveInput",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -149,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Jump",
+                    "action": "JumpInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -171,7 +171,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Sprint",
+                    "action": "SprintInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -226,7 +226,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Crouch",
+                    "action": "CrouchInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

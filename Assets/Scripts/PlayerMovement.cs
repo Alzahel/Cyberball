@@ -27,16 +27,10 @@ public class PlayerMovement : NetworkBehaviour
 
     //Sprint
     [SerializeField] private float sprintSpeed = 10f;
-        
+    public bool HasEnergy { get; set; } = true;
     private bool sprintFirstTap;
     private const float SprintTimeBeforeSecondPress = 0.2f;
 
-    //Energy managment
-    [SerializeField] private float maxEnergyAmount = 100;
-    private float energyAmount;
-    [SerializeField] private float energyBurnSpeed = 10f;
-    [SerializeField] private float energyRegenSpeed = 3f;
-        
     //Movement input
     public float Horizontal { get; private set; }
     public float Vertical { get; private set; } 
@@ -45,31 +39,56 @@ public class PlayerMovement : NetworkBehaviour
     public bool IsCrouching{ get; private set; }
     public bool IsJumping{ get; private set; }
     public bool IsSprinting{ get; private set; }
+    
+    //Events
+    public event EventHandler<OnMoveEventArgs> OnMove;
 
+    public class OnMoveEventArgs : EventArgs
+    {
+        public float X;
+        public float Y;
+    }
+    public event EventHandler<OnSprintEventArgs> OnSprint;
+
+    public class OnSprintEventArgs : EventArgs
+    {
+        public bool IsSprinting;
+    }
+    public event EventHandler<OnCrouchEventArgs> OnCrouch;
+    public class OnCrouchEventArgs : EventArgs
+    {
+        public bool IsCrouching;
+    }
+    
     // Start is called before the first frame update
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
     }
 
-    private void Start()
+    public override void OnStartAuthority()
     {
-        if (!hasAuthority) return;
-            
+        base.OnStartAuthority();
+        
         moveSpeed = walkSpeed;
-        energyAmount = maxEnergyAmount;
         //playerShoot.Shot += StopSpecialMovements;
 
         //to see the physic equations look at :https://youtu.be/PlT44xr0iW0?list=PLFt_AvWsXl0f0hqURlhyIoAabKPgRsqjz&t=351
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpPeak, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpPeak;
     }
-
+    
     //Cancel all special Movemennts : Sprint / Dodge / WallJump / Dash / Slide / wallrun...
-    private void StopSpecialMovements()
+    public void CancelAllMovements()
     {
         CancelSprint();
         if (IsCrouching) CancelCrouching();
+    }
+    
+    //Cancel all special Movemennts : Sprint / Dodge / WallJump / Dash / Slide / wallrun...
+    public void CancelAllSpecialMovements()
+    {
+        CancelSprint();
     }
 
     // Update is called once per frame
@@ -77,7 +96,6 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (hasAuthority)
         {
-
             Sprint();
             Jump();
             CharacterMovement();
@@ -92,34 +110,32 @@ public class PlayerMovement : NetworkBehaviour
         movementDirection.y += gravity * Time.deltaTime;
         movementDirection = transform.TransformDirection(movementDirection);
         characterController.Move(movementDirection * Time.deltaTime);
+        
+        OnMove?.Invoke(this, new OnMoveEventArgs{X=movementDirection.x, Y = movementDirection.y});
     }
     
     private void Sprint()
     {
+        if (!HasEnergy) return;
+        
         //Si on détecte le firstTap et que dans la durée autorisée (SprintWaitForSecondPress) on détecte un appui de la touche "avancer" alors on sprint
         //Le second press après le tap (OnSprint) est géré avec une coroutine qui donne au joueur une certaines durée pour réappuyer sur la touche "avancer" 
         //qui sera détectée  dans le OnMove car l'input manager ne gère pas des séries d'action qui permettrait de détecter le tap puis le press
         if (sprintFirstTap)
         {
-            if (Vertical > 0 && energyAmount > 0 && !IsSprinting)
+            if (Vertical > 0 && !IsSprinting)
             {
                 IsSprinting = true;
                 moveSpeed = sprintSpeed;
-                //if (AudioManager.instance != null) AudioManager.instance.PlaySound("Sprint");
+
+                OnSprint?.Invoke(this, new OnSprintEventArgs {IsSprinting = IsSprinting});
             }
             //Si la touche avancé est relaché ou que l'énergie est vide on arrête de sprinter
         }
-        else if (((Vertical <= 0) || energyAmount <= 0) && IsSprinting)
+        else if (((Vertical <= 0)) && IsSprinting)
         {
             CancelSprint();
         }
-
-        //Energy management
-        if (IsSprinting)
-        {
-            energyAmount -= energyBurnSpeed * Time.deltaTime;
-        }
-        else RegenEnergy();
     }
 
     //Cancel sprint movement
@@ -129,15 +145,15 @@ public class PlayerMovement : NetworkBehaviour
         {
             IsSprinting = false;
             moveSpeed = walkSpeed;
-            //if (AudioManager.instance != null) AudioManager.instance.PlaySound("StopSprint");
+            
+            OnSprint?.Invoke(this, new OnSprintEventArgs{IsSprinting = IsSprinting});
         }
     }
 
     private void Crouch()
     {
-        //change the hitbox when crouching
-
         Debug.Log("Start crouching");
+
         IsCrouching = true;
         characterController.height = 1;
         Vector3 center = characterController.center;
@@ -151,18 +167,21 @@ public class PlayerMovement : NetworkBehaviour
         characterController.height = 1.2f;
         center.y = 0.6f;
         characterController.center = center;
-
+        
+        OnCrouch?.Invoke(this, new OnCrouchEventArgs{IsCrouching = IsCrouching});
     }
 
     private void CancelCrouching()
     {
         Debug.Log("Stop crouching");
+        
         IsCrouching = false;
-        //if (anim != null) anim.SetBool("isCrouching", false);
         characterController.height = 1.5f;
         var center = characterController.center;
         center.y = 0.8f;
         characterController.center = center;
+        
+        OnCrouch?.Invoke(this, new OnCrouchEventArgs{IsCrouching = IsCrouching});
     }
 
     private void Jump()
@@ -187,18 +206,10 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
-    private void RegenEnergy()
-    {
-        if (energyAmount < maxEnergyAmount) energyAmount += energyRegenSpeed * Time.deltaTime;
-
-        //Makes sure energyAmount can't go out the boundaries of 0 / max Energy
-        if (energyAmount < 0 || energyAmount > 100) energyAmount = Mathf.Clamp(energyAmount, 0, maxEnergyAmount);
-    }
-
     #region Input Reading
 
     [UsedImplicitly]
-    private void OnMove(InputValue value)
+    private void OnMoveInput(InputValue value)
     {
         if (!hasAuthority) return;
         
@@ -207,7 +218,7 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     [UsedImplicitly]
-    private void OnSprint()
+    private void OnSprintInput()
     {
         if (!hasAuthority) return;
         
@@ -221,7 +232,7 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     [UsedImplicitly]
-    private void OnJump(InputValue value)
+    private void OnJumpInput(InputValue value)
     {
         if (!hasAuthority) return;
 
@@ -231,7 +242,7 @@ public class PlayerMovement : NetworkBehaviour
     }
 
     [UsedImplicitly]
-    private void OnCrouch(InputValue value)
+    private void OnCrouchInput(InputValue value)
     {
         if (!hasAuthority) return;
         

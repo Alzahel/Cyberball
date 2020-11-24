@@ -106,6 +106,12 @@ namespace Network
         {
             ServerChangeScene(GameplayScene);
         }
+        
+        [Server]
+        public void CloseRoom()
+        {
+            StopHost();
+        }
 
     }
 }

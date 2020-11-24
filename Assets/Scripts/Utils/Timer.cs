@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cyberball.Utils
+namespace Utils
 {
 
     /// <summary>
@@ -15,7 +15,7 @@ namespace Cyberball.Utils
             RemainingSeconds = duration;
         }
 
-        public event Action ontimerEnd;
+        public event Action OntimerEnd;
 
         public void Tick(float deltaTime)
         {
@@ -30,7 +30,7 @@ namespace Cyberball.Utils
 
             RemainingSeconds = 0;
 
-            ontimerEnd?.Invoke();
+            OntimerEnd?.Invoke();
         }
     }
 }

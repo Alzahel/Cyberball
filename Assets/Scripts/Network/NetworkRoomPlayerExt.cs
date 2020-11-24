@@ -33,17 +33,18 @@ namespace Network
 
         public void HandleTeamChanged(int oldValue, int newValue) 
         { 
-            LobbyDisplay.Instance.UpdateDisplay();
+            RemoveFromTeam(oldValue);
+            
             if (newValue == 1)
             {
                 NetworkRoomManagerExt.Instance.team1.Add(gameObject);
-                if(oldValue ==2) NetworkRoomManagerExt.Instance.team2.Remove(gameObject);
             }
-            else
+            else if (newValue == 2)
             {
                 NetworkRoomManagerExt.Instance.team2.Add(gameObject);
-                if(oldValue == 1) NetworkRoomManagerExt.Instance.team1.Remove(gameObject);
             }
+            
+            LobbyDisplay.Instance.UpdateDisplay();
         }
 
         public void HandleUsernameChanged(string oldValue, string newValue) => LobbyDisplay.Instance.UpdateDisplay();
@@ -120,6 +121,12 @@ namespace Network
         {
             CmdSetTeamID(2);
         }
+        private void RemoveFromTeam(int teamID)
+        {
+            if(teamID == 2) NetworkRoomManagerExt.Instance.team2.Remove(gameObject);
+            if(teamID == 1) NetworkRoomManagerExt.Instance.team1.Remove(gameObject);
+        }
+        
 
         #endregion
 
@@ -150,8 +157,11 @@ namespace Network
         {
             base.OnClientExitRoom();
 
+            RemoveFromTeam(teamID);
             LobbyDisplay.Instance.UpdateDisplay();
         }
+        
+
         #endregion
     }
 }

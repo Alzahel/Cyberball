@@ -53,6 +53,8 @@ namespace Managers
 
         private void Start()
         {
+            DontDestroyOnLoad(this);
+            
             for (int i = 0; i < sounds.Length; i++)
             {
                 GameObject go = new GameObject("Sound_" + i + "_" + sounds[i].name);

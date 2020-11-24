@@ -17,6 +17,13 @@ namespace Managers
         public List<NetworkGamePlayer> Players => players;
         private bool IsRoundOver { get; set; }
 
+        #region Constantes
+        
+        public const string PlayerTag = "Player";
+        public const string PlayerHeadTag = "PlayerHead";
+
+        #endregion
+        
         #region Unity Callbacks
 
         private void Awake()

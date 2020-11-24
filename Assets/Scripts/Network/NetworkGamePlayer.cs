@@ -1,5 +1,6 @@
 ﻿using Managers;
 using Mirror;
+using UnityEngine;
 
 namespace Network
 {
@@ -10,6 +11,9 @@ namespace Network
 
         [SyncVar] private string username;
         [SyncVar] private int teamID;
+
+        [SerializeField] private GameObject hud;
+        
         private bool isDead;
 
         public int TeamID { get => teamID; set => teamID = value; }
@@ -30,6 +34,11 @@ namespace Network
             base.OnStartServer();
 
             GameManager.Instance.Players.Add(this);
+        }
+
+        public override void OnStartClient()
+        {
+            hud.SetActive(hasAuthority);
         }
 
         #endregion

@@ -585,11 +585,12 @@
           <e p="Camera" t="Include">
             <e p="PlayerCameraController.cs" t="Include" />
           </e>
+          <e p="EnergySystem.cs" t="Include" />
           <e p="Goal.cs" t="Include" />
           <e p="Health" t="Include">
             <e p="Damageable.cs" t="Include" />
             <e p="Healable.cs" t="Include" />
-            <e p="Health.cs" t="Include" />
+            <e p="HealthSystem.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
             <e p="AudioManager.cs" t="Include" />
@@ -610,13 +611,21 @@
             <e p="NetworkRoomPlayerExt.cs" t="Include" />
           </e>
           <e p="PlayerAnimation.cs" t="Include" />
+          <e p="PlayerAudio.cs" t="Include" />
+          <e p="PlayerEnergy.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerShoot.cs" t="Include" />
+          <e p="PlayerVisualEffects.cs" t="Include" />
           <e p="Spawn" t="Include">
             <e p="PlayerSpawnPoint.cs" t="Include" />
             <e p="PlayerSpawnSystem.cs" t="Include" />
           </e>
+          <e p="UI" t="Include">
+            <e p="EnergyBar.cs" t="Include" />
+            <e p="LifeBar.cs" t="Include" />
+          </e>
           <e p="Utils" t="Include">
+            <e p="BarFill.cs" t="Include" />
             <e p="SetLayerRecursively.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>
