@@ -54,6 +54,8 @@ public class PlayerShoot : NetworkBehaviour
         if (hasAuthority)
         {
             if (shooting) Shoot();
+            
+            if(Input.GetKeyDown(KeyCode.K)) CmdPlayerShot(this.gameObject, 50);
         }
 
     }
@@ -159,9 +161,5 @@ public class PlayerShoot : NetworkBehaviour
         Debug.Log(hitGameObject.name + " has been shot.");
         
         hitGameObject.GetComponent<Damageable>().Damage(damage);
-        
-        //Player player = GameManager.GetPlayer(_damagedPlayerID);
-        //player.RPCTakeDamage(_damage, _damageSourceID);
-
     }
 }

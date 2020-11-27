@@ -1,6 +1,10 @@
 ﻿using System;
+using Cyberball;
+using Cyberball.Spawn;
 using Mirror;
+using Network;
 using UnityEngine;
+using Weapons;
 
 namespace Health
 {
@@ -13,7 +17,7 @@ namespace Health
         [SyncVar(hook = nameof(HandleHealthChanged))]
         private float currentHealth;
 
-        public static event EventHandler<DeathEventArgs> OnDeath;
+        public event EventHandler<DeathEventArgs> OnDeath;
         public event EventHandler<HealthChangedEventArgs> OnHealthChanged;
         
         public class HealthChangedEventArgs
@@ -23,7 +27,7 @@ namespace Health
         }
         public class DeathEventArgs
         {
-            public NetworkConnection ConnectionToClient;
+            public GameObject DeadObject;
         }
 
         public bool IsDead => currentHealth == 0f;
@@ -36,7 +40,7 @@ namespace Health
         [ServerCallback]
         private void OnDestroy()
         {
-            OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
+            OnDeath?.Invoke(this, new DeathEventArgs { DeadObject = gameObject });
         }
         
         public float GetHealthPercent()
@@ -61,12 +65,11 @@ namespace Health
             
             if (currentHealth <= 0)
             {
-                OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
-
-                RPCHandleDeath();
+                HandleDeath();
             } 
         }
         
+        [Server]
         public void ResetHealth()
         {
             currentHealth = maxHealth;
@@ -80,11 +83,27 @@ namespace Health
             CurrentHealth = currentHealth
         });
         }
-
-        [ClientRpc]
-        private void RPCHandleDeath()
+        
+        [Server]
+        private void HandleDeath()
         {
+           
+            
+            RpcHandleDeath();
+            PlayerSpawnSystem.Instance.SpawnPlayer(gameObject, PlayerSpawnSystem.Instance.GetSpawnPos(GetComponent<NetworkGamePlayer>().TeamID), MatchSettings.RespawnTime);
+            GetComponent<HealthSystem>().ResetHealth();
+            GetComponent<EnergySystem>().ResetEnergy();
+            GetComponent<WeaponManager>().ResetAmmunition();
+            
+        }
+        
+        [ClientRpc]
+        private void RpcHandleDeath()
+        {
+            OnDeath?.Invoke(this, new DeathEventArgs { DeadObject = gameObject });
+            
             gameObject.SetActive(false);
+            GetComponent<PlayerMovement>().CancelAllMovements();
         }
 
         private void ClampHealth()

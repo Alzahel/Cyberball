@@ -1,4 +1,5 @@
 ﻿using Cyberball;
+using Health;
 using JetBrains.Annotations;
 using Managers;
 using Network;
@@ -28,7 +29,7 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (player != null && player.IsDead) DropBall();
+        if (player != null && player.GetComponent<HealthSystem>().IsDead) DropBall();
     }
     void OnTriggerEnter(Collider col)
     {

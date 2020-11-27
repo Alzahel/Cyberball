@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cyberball;
 using Cyberball.Spawn;
 using Mirror;
 using Network;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace Managers
 {
-    class GameManager : NetworkBehaviour
+    internal class GameManager : NetworkBehaviour
     {
         public static GameManager Instance;
 
@@ -26,16 +27,12 @@ namespace Managers
         
         #region Unity Callbacks
 
+        [Server]
         private void Awake()
         {
             if (Instance == null) Instance = this;
         }
-
-        private void Start()
-        {
-            DontDestroyOnLoad(this);
-        }
-
+        
         [Server]
         private void Update()
         {
@@ -75,20 +72,10 @@ namespace Managers
             IsRoundOver = false;
             currentRound++;
 
-            StartCoroutine(StartRound());
+            PlayerSpawnSystem.Instance.SpawnAllPlayers(MatchSettings.TimeBetweenRounds);
+            Debug.Log("Round " + currentRound + " started !" );
         }
-
-
-        [SerializeField] private float timeBeforeRespawn =5;
-        [Server]
-        private IEnumerator StartRound()
-        {
-            yield return new WaitForSeconds(timeBeforeRespawn);
-            Debug.Log("Round Started");
-
-            PlayerSpawnSystem.Instance.SpawnAllPlayers();
-
-        }
+        
         #endregion
 
         #region Score management
@@ -106,9 +93,6 @@ namespace Managers
 
             IsRoundOver = true;
             
-            //StartCoroutine(ResetAfterGoal());
-
-
             Debug.Log("team 1 : "+ team1Score + "team 2 : " + team2Score );
         }
 

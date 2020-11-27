@@ -384,6 +384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  deathEffect: {fileID: 126342, guid: 2bd76d724a53b1a4ba29be34fa3be918, type: 3}
+  spawnEffect: {fileID: 136626, guid: c6548984f8886c54693d5e87b8bf18a0, type: 3}
 --- !u!114 &6524985301046986698
 MonoBehaviour:
   m_ObjectHideFlags: 0

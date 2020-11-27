@@ -138,12 +138,13 @@ namespace Network
         
             SetUsername(PlayerNameInput.DisplayName);
             if (index == 0) IsLeader = true;
+            AddToTeamWithLessMembers();
         }
 
         public override void OnStartClient()
         {
             base.OnStartClient();
-            AddToTeamWithLessMembers();
+            
         }
 
         public override void OnClientEnterRoom()

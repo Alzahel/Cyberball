@@ -72,8 +72,13 @@ namespace Weapons
             CMDOnReload();
             Debug.Log("Reloading...");
             yield return new WaitForSeconds(currentWeapon.ReloadTime);
-            currentWeapon.RemainingAmmunitions = currentWeapon.MaxAmmunitions;
+            ResetAmmunition();
             isReloading = false;
+        }
+
+        public void ResetAmmunition()
+        {
+            currentWeapon.RemainingAmmunitions = currentWeapon.MaxAmmunitions;
         }
 
         [Command]

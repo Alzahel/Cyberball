@@ -1,18 +1,25 @@
 ﻿using System;
+using Health;
 using Managers;
 using Mirror;
+using Network;
 using UnityEngine;
 
 public class PlayerAudio : NetworkBehaviour
 {
+    private NetworkGamePlayer player;
     private AudioManager audioManager;
     private PlayerMovement playerMovement;
     private PlayerShoot playerShoot;
+    private HealthSystem playerHealth;
 
     private void Awake()
     {
+        player = GetComponent<NetworkGamePlayer>();
         playerMovement = GetComponent<PlayerMovement>();
         playerShoot = GetComponent<PlayerShoot>();
+        playerHealth = GetComponent<HealthSystem>();
+        
         audioManager = AudioManager.Instance;
     }
 
@@ -22,6 +29,8 @@ public class PlayerAudio : NetworkBehaviour
     {
         base.OnStartAuthority();
 
+        if (player != null) player.OnRespawn += CmdPlaySpawnAudio;
+        
         if (playerMovement != null)
         { 
             playerMovement.OnSprint += PlaySprintAudio;
@@ -32,11 +41,15 @@ public class PlayerAudio : NetworkBehaviour
             playerShoot.Shot += CmdPlayShootAudio;
             playerShoot.Hit += CmdPlayHitAudio;
         }
+
+        if (playerHealth != null) playerHealth.OnDeath += CmdPlayDeathAudio;
     }
 
     public override void OnStopAuthority()
     {
         base.OnStopAuthority();
+        
+        if (player != null) player.OnRespawn -= CmdPlaySpawnAudio;
         
         if (playerMovement != null)
         {
@@ -47,6 +60,8 @@ public class PlayerAudio : NetworkBehaviour
             playerShoot.Shot -= CmdPlayShootAudio;
             playerShoot.Hit -= CmdPlayHitAudio;
         }
+        
+        if (playerHealth != null) playerHealth.OnDeath -= CmdPlayDeathAudio;
         
     }
 
@@ -85,6 +100,29 @@ public class PlayerAudio : NetworkBehaviour
         audioManager.PlaySound(hitTag == GameManager.PlayerTag ? "BulletHit" : "BulletCriticalHit");
     }
     
+    [Command]
+    private void CmdPlayDeathAudio(object sender,  HealthSystem.DeathEventArgs e)
+    {
+        RpcPlayDeathAudio(e.DeadObject.transform.position);
+    }
+    
+    [ClientRpc]
+    private void RpcPlayDeathAudio(Vector3 position)
+    {
+        audioManager.PlaySpatialSound("Death", position);
+    }
+    
+    [Command]
+    private void CmdPlaySpawnAudio(object sender, EventArgs e)
+    {
+        RpcPlaySpawnAudio();
+    }
+    
+    [ClientRpc]
+    private void RpcPlaySpawnAudio()
+    {
+        audioManager.PlaySpatialSound("Spawn", player.transform.position);
+    }
     #endregion
 
 }

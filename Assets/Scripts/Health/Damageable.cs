@@ -14,6 +14,7 @@ namespace Health
             health = GetComponent<HealthSystem>();
         }
 
+        [Server]
         public void Damage(int damageAmount)
         {
             health.Remove(damageAmount);

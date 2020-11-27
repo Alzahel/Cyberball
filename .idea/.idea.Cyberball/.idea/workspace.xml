@@ -20,21 +20,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0eab473-54be-4889-bacc-70fc56399293" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/NameplateCanvas.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/NameplateCanvas.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerUISetup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerUISetup.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/CameraFacingObject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/CameraFacingObject.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/GameManager.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/GameManager.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/ParticlesEffects/DeathExplosion.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/ParticlesEffects/DeathExplosion.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Respawn_Base.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Respawn_Base.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/Spawn.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Sounds/Spawn.wav.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Environment/Free LowPoly SciFi Pack/Prefabs/ColumnB.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Environment/Free LowPoly SciFi Pack/Prefabs/ColumnB.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/ParticlesEffects/Explosion.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/ParticlesEffects/Explosion.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/Respawn.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Sounds/Respawn.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene_Map_02.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene_Map_02.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EnergySystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EnergySystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MatchSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MatchSettings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerAudio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/EnergyBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/EnergyBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LifeBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HealthBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LifeBar.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/HealthBar.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utils/BarFill.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/BarFill.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerVisualEffects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerVisualEffects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,43 +84,44 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiMenuSetup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/UiLobbySetup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/HostRoom.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/PlayerNameInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/LobbyDisplay.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu &amp; Lobby/JoinRoomAsClient.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/AudioManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAudio.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerVisualEffects.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerEnergy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/SetLayerRecursively.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlayerEnergyBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/package.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Health.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/EnergySystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EnergyBar1.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/LifeBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/EnergyBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/BarFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/HealthBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/CameraFacingUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/CameraFacingObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerUISetup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAudio.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnergySystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MatchSettings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerVisualEffects.cs" />
       </list>
     </option>
   </component>
@@ -166,7 +185,8 @@
       <workItem from="1606144218280" duration="23995000" />
       <workItem from="1606180153206" duration="365000" />
       <workItem from="1606181322114" duration="264000" />
-      <workItem from="1606225792636" duration="8930000" />
+      <workItem from="1606225792636" duration="18800000" />
+      <workItem from="1606489756203" duration="11372000" />
     </task>
     <servers />
   </component>
@@ -209,6 +229,10 @@
     </state>
     <state x="316" y="117" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1605999023515" />
     <state x="176" y="49" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606180523727" />
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1606242746971">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606242746971" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1606176016503">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

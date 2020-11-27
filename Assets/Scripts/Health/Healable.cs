@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Cyberball.Health
+namespace Health
 {
     [RequireComponent(typeof(global::Health.HealthSystem))]
     public class Healable : MonoBehaviour
@@ -9,7 +9,7 @@ namespace Cyberball.Health
 
         private void Awake()
         {
-            healthSystem = GetComponent<global::Health.HealthSystem>();
+            healthSystem = GetComponent<HealthSystem>();
         }
 
         public void Heal(int healAmount)
