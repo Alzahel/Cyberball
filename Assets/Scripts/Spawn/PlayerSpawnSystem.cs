@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Health;
 using Managers;
 using Mirror;
 using Mirror.Examples.Chat;
 using Network;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Weapons;
 
 namespace Cyberball.Spawn
 {
@@ -48,7 +50,7 @@ namespace Cyberball.Spawn
         [ClientRpc]
         public void SpawnPlayer(GameObject player, Transform spawnPosition, float timeBeforeRespawn)
         {
-           // NetworkGamePlayer player = conn.identity.GetComponent<NetworkGamePlayer>();
+            // NetworkGamePlayer player = conn.identity.GetComponent<NetworkGamePlayer>();
             StartCoroutine(Spawn(player, spawnPosition, timeBeforeRespawn));
         }
         
@@ -61,6 +63,11 @@ namespace Cyberball.Spawn
                 player.transform.SetPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
                 player.gameObject.SetActive(true);
                 player.GetComponent<NetworkGamePlayer>().Respawn();
+                
+                //Reset all players components
+                player.GetComponent<HealthSystem>().ResetHealth();
+                player.GetComponent<EnergySystem>().ResetEnergy();
+                player.GetComponent<WeaponManager>().ResetAmmunition();
             }
         }
         

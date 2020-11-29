@@ -623,7 +623,9 @@
           </e>
           <e p="UI" t="Include">
             <e p="EnergyBar.cs" t="Include" />
+            <e p="GameHUD.cs" t="Include" />
             <e p="HealthBar.cs" t="Include" />
+            <e p="TextTimerUpdate.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="BarFill.cs" t="Include" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using Cyberball;
 using Cyberball.Spawn;
+using Managers;
 using Mirror;
 using Network;
 using UnityEngine;
@@ -88,13 +89,12 @@ namespace Health
         private void HandleDeath()
         {
            
-            
+            //Handle death on clients
             RpcHandleDeath();
-            PlayerSpawnSystem.Instance.SpawnPlayer(gameObject, PlayerSpawnSystem.Instance.GetSpawnPos(GetComponent<NetworkGamePlayer>().TeamID), MatchSettings.RespawnTime);
-            GetComponent<HealthSystem>().ResetHealth();
-            GetComponent<EnergySystem>().ResetEnergy();
-            GetComponent<WeaponManager>().ResetAmmunition();
             
+            //do not respawn if the round is Over
+            if(!GameManager.Instance.IsRoundOver) PlayerSpawnSystem.Instance.SpawnPlayer(gameObject, 
+                PlayerSpawnSystem.Instance.GetSpawnPos(GetComponent<NetworkGamePlayer>().TeamID), MatchSettings.RespawnTime);
         }
         
         [ClientRpc]

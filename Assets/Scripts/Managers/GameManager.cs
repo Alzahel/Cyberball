@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Cyberball;
 using Cyberball.Spawn;
@@ -16,7 +17,7 @@ namespace Managers
         [SerializeField] private List<NetworkGamePlayer> players = new List<NetworkGamePlayer>();
 
         public List<NetworkGamePlayer> Players => players;
-        private bool IsRoundOver { get; set; }
+        public bool IsRoundOver { get; set; }
 
         #region Constantes
         
@@ -38,10 +39,10 @@ namespace Managers
         {
             if (SceneManager.GetActiveScene().name.StartsWith("Scene_Map"))
                 if (!allPlayersLoaded) AllPlayersLoadedCheck();
-                else if (IsRoundOver || currentRound == 0) StartNewRound();
+                else if (currentRound == 0 && !IsRoundOver) StartCoroutine(StartNewRound());
             
             
-            if(Input.GetKeyDown(KeyCode.R)) StartNewRound();
+            if(Input.GetKeyDown(KeyCode.R)) StartCoroutine(StartNewRound());
                  
         }
 
@@ -51,7 +52,16 @@ namespace Managers
 
         private bool allPlayersLoaded;
         private int currentRound;
-  
+
+        public float RemainingTimeBeforeNextRound { get; set; } = MatchSettings.TimeBetweenRounds;
+
+        public event EventHandler<NewRoundLaunchedEventArgs> NewRoundLaunched;
+        public event EventHandler<EventArgs> NewRoundStarted;
+
+        public class NewRoundLaunchedEventArgs
+        {
+            public float RemainingTimeBeforeNextRound;
+        }
         [Server]
         private void AllPlayersLoadedCheck()
         {
@@ -65,17 +75,38 @@ namespace Managers
         }
 
         [Server]
-        private void StartNewRound()
+        private IEnumerator StartNewRound()
         {
             Debug.Log("New round setup");
+            
+            IsRoundOver = true;
+            //We stop coroutines of the spawn system in order to not respawn players when a round is over
+            PlayerSpawnSystem.Instance.StopAllCoroutines();
+            
+            yield return new WaitForSeconds(2);
 
+            
+            RemainingTimeBeforeNextRound = MatchSettings.TimeBetweenRounds;
+           
+            while (RemainingTimeBeforeNextRound > 0) {
+                
+                NewRoundLaunched?.Invoke(this, new NewRoundLaunchedEventArgs{RemainingTimeBeforeNextRound = RemainingTimeBeforeNextRound});
+                
+                yield return new WaitForSeconds (1);
+                
+                RemainingTimeBeforeNextRound--;
+            }
+            
+            NewRoundStarted?.Invoke(this, EventArgs.Empty);
+            
+            PlayerSpawnSystem.Instance.SpawnAllPlayers(0);
+            
             IsRoundOver = false;
             currentRound++;
-
-            PlayerSpawnSystem.Instance.SpawnAllPlayers(MatchSettings.TimeBetweenRounds);
+            
             Debug.Log("Round " + currentRound + " started !" );
         }
-        
+
         #endregion
 
         #region Score management
@@ -83,15 +114,19 @@ namespace Managers
         [SyncVar] private int team1Score;
         [SyncVar] private int team2Score;
 
+        public event EventHandler<EventArgs> GoalScored;
+        
         [Server]
         public void ScoreGoal(int teamID)
         {
             if (IsRoundOver) return;
 
+            GoalScored?.Invoke(this, EventArgs.Empty);
+            
             if (teamID == 1) team1Score++;
             else team2Score++;
 
-            IsRoundOver = true;
+            StartCoroutine(StartNewRound());
             
             Debug.Log("team 1 : "+ team1Score + "team 2 : " + team2Score );
         }

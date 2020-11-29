@@ -24,6 +24,7 @@ namespace Network
 
         [SerializeField] private GameObject spawnSystem;
         [SerializeField] private GameObject gameManager;
+        [SerializeField] private GameObject gameHud;
 
         public override void Awake()
         {
@@ -81,11 +82,9 @@ namespace Network
         public override void OnServerSceneChanged(string sceneName)
         {
             base.OnServerSceneChanged(sceneName);
-            
-            //if (newSceneName.StartsWith("Scene_Map")) return;
+
             GameObject gameManagerInstance = Instantiate(gameManager);
             NetworkServer.Spawn(gameManagerInstance);
-
             GameManager.Instance = gameManagerInstance.GetComponent<GameManager>();
         }
         
@@ -117,6 +116,9 @@ namespace Network
             player.TeamID = oldPlayer.TeamID;
             player.HasLoaded = true;
 
+            GameObject gameHudInstance = Instantiate(gameHud);
+            NetworkServer.Spawn(gameHudInstance);
+            
             return true;
         }
 

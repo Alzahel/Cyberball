@@ -141,7 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0
-  teamID: 0
 --- !u!95 &2277551866563987587
 Animator:
   serializedVersion: 3
