@@ -1,6 +1,6 @@
 # Cyberball
  
-Cyberball est un prototype que j'ai réalisé afin d'essayer l'API [Mirror](https://mirror-networking.com)
+Cyberball est un prototype que j'ai réalisé afin d'essayer l'API [Mirror](https://mirror-networking.com)  
 Le projet est actuellement en pause mais j'aimerai le développer plus en profondeur dans le futur jusqu'à atteindre un état pleinement jouable.
 
 ## Concept
@@ -14,21 +14,21 @@ Le jeu se déroule dans un univers futuriste dans lequel le Cyberball est un spo
 
 ## Contrôles 
 
-ZQSD : Déplacement
-2 Appuis rapide sur Z : Sprint 
-Espace : Saut
-Clic gauche : Tir
-R : Recharger
+ZQSD : Déplacement  
+2 Appuis rapide sur Z : Sprint   
+Espace : Saut  
+Clic gauche : Tir  
+R : Recharger  
 
 ## Vidéo démo
 
 ## Instructions d'installation
 
-Pour essayer le jeu, téléchargez simplement le projet et lancez Builds/mainBuild/Cyberball.exe
+Pour essayer le jeu, téléchargez simplement le projet et lancez Builds/mainBuild/Cyberball.exe  
 
-Pour se connecter à plusieurs en simultané, le 1er joueur doit sélectionner "Host".
-Une fois une instance Host lancée, les autres devront sélection "Join Lobby" > Join, en laissant localhost (uniquement si vous êtes sur le même réseau).
+Pour se connecter à plusieurs en simultané, le 1er joueur doit sélectionner "Host".  
+Une fois une instance Host lancée, les autres devront sélection "Join Lobby" > Join, en laissant localhost (uniquement si vous êtes sur le même réseau).  
 
-Pour se connecter de réseaux différents, il faudra en revanche mettre en place une redirection de port et entrez l'adresse IP de l'Host.
+Pour se connecter de réseaux différents, il faudra en revanche mettre en place une redirection de port et entrez l'adresse IP de l'Host.  
 
 Pour tester les fonctionnalités réseaux seul, lancez simplement plusieurs instances en LocalHost.
