@@ -1,6 +1,6 @@
 # Cyberball
  
-Cyberball est un prototype que j'ai réalisé afin d'essayer l'API [Mirror](https://mirror-networking.com)  
+Cyberball est un prototype que j'ai réalisé afin d'essayer l'API [Mirror](https://mirror-networking.com).  
 Le projet est actuellement en pause mais j'aimerai le développer plus en profondeur dans le futur jusqu'à atteindre un état pleinement jouable.
 
 ## Concept
