@@ -20,12 +20,27 @@ Espace : Saut
 Clic gauche : Tir  
 R : Recharger  
 
-<details>
-  <summary>Spoiler warning</summary>
- 
- sdds
- </details>
 ## Vidéo démo
+
+<details>
+  <summary>Host Lobby</summary>
+
+</details>
+
+<details>
+  <summary>Join Lobby</summary>
+
+</details>
+
+<details>
+  <summary>Move / Jump / Crouch</summary>
+
+</details>
+
+<details>
+  <summary>Move / Jump / Crouch</summary>
+<summary>Move / Jump / Crouch</summary>
+</details>
 
 ## Instructions d'installation
 
