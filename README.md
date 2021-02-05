@@ -8,7 +8,7 @@ Le projet est actuellement en pause mais j'aimerai le développer plus en profon
 Cyberball est un jeu compétitif 5V5 à mi chemin entre un jeu de tir à la 3ème personne et un jeu de football américain. 
 Deux équipes s'affrontent, chacune dispose d'une base dans laquelle se trouve un point d'apparition et un but.  L'objectif pour les joueurs est de récupérer la balle situé en milieu de terrain et de la placer dans le but adverse. La balle s'attache au 1er joueur qui entre en contact avec et tombe au sol lorsque celui-ci meurt. Une partie dure 5 minutes à la fin desquelles l'équipe avec le maximum de points sort victorieuse.
 
-## Univers
+## Univers / Lore
 
 Le jeu se déroule dans un univers futuriste dans lequel le Cyberball est un sport populaire prenant son essor dans la popularité grandissante de la réalité virtuelle.
 
