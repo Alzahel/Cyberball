@@ -18,7 +18,7 @@ ZQSD : Déplacement
 2 Appuis rapide sur Z : Sprint   
 Espace : Saut  
 Clic gauche : Tir  
-R : Recharger  
+>! R : Recharger  
 
 ## Vidéo démo
 
