@@ -1,7 +1,7 @@
 # Cyberball
  
 Cyberball est un prototype que j'ai réalisé afin d'essayer l'API [Mirror](https://mirror-networking.com).  
-Le projet est actuellement en pause mais j'aimerai le développer plus en profondeur dans le futur jusqu'à atteindre un état pleinement jouable.
+Le projet est actuellement en pause mais j'aimerai le développer plus en profondeur dans le futur, notamment en ajoutant des options de déplacement suplémentaires (dodge, wall jump...) et en réalisant de plus belles maps.
 
 ## Concept
 
@@ -10,7 +10,7 @@ Deux équipes s'affrontent, chacune dispose d'une base dans laquelle se trouve u
 
 ## Univers
 
-Le jeu se déroule dans un univers futuriste dans lequel le Cyberball est un sport populaire qui se déroule en réalité virtuelle.
+Le jeu se déroule dans un univers futuriste dans lequel le Cyberball est un sport populaire prenant son essor dans la popularité grandissante de la réalité virtuelle.
 
 ## Contrôles 
 
