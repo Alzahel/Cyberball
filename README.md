@@ -33,13 +33,25 @@ R : Recharger
 </details>
 
 <details>
-  <summary>Move / Jump / Crouch</summary>
+  <summary>Start the game</summary>
 
 </details>
 
 <details>
   <summary>Move / Jump / Crouch</summary>
-<summary>Move / Jump / Crouch</summary>
+
+</details>
+
+<details>
+  <summary>Shoot ennemies</summary>
+</details>
+
+<details>
+  <summary>Get the ball & score</summary>
+</details>
+
+<details>
+  <summary>Get the ball from an ennemy</summary>
 </details>
 
 ## Instructions d'installation
