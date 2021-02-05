@@ -22,36 +22,42 @@ R : Recharger
 
 ## Vidéo démo
 
+:warning: Vidéos en cours de réalisation
+
 <details>
-  <summary>Host Lobby</summary>
+  <summary>Host un Lobby</summary>
 
 </details>
 
 <details>
-  <summary>Join Lobby</summary>
+  <summary>Rejoindre un Lobby</summary>
 
 </details>
 
 <details>
-  <summary>Start the game</summary>
+  <summary>Débuter la partie</summary>
 
 </details>
 
 <details>
-  <summary>Move / Jump / Crouch</summary>
+  <summary>Mouvement / saut / Accroupissement</summary>
 
 </details>
 
 <details>
-  <summary>Shoot ennemies</summary>
+  <summary>Tirs, tirs sur les adversaires, tirs à la tête, tuer un adversaire</summary>
 </details>
 
 <details>
-  <summary>Get the ball & score</summary>
+  <summary>Réapparation après la mort</summary>
 </details>
 
 <details>
-  <summary>Get the ball from an ennemy</summary>
+  <summary>Rammasser la balle et marquer</summary>
+</details>
+
+<details>
+  <summary>Récupérer la balle aux ennemis</summary>
 </details>
 
 ## Instructions d'installation
