@@ -20,7 +20,7 @@ Espace : Saut
 Clic gauche : Tir  
 R : Recharger  
 
-## Vidéo démo
+## Démos
 
 :warning: Vidéos en cours de réalisation
 
