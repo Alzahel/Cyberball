@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Managers;
 using Mirror;
 using Mirror.SimpleWeb;
+using Network;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -54,6 +55,8 @@ public class PlayerShoot : NetworkBehaviour
         if (hasAuthority)
         {
             if (shooting) Shoot();
+            
+            if(Input.GetKeyDown(KeyCode.K)) CmdPlayerShot(this.gameObject, 50);
         }
 
     }
@@ -117,7 +120,7 @@ public class PlayerShoot : NetworkBehaviour
         }
     }
 
-    //Call the event that the player has shot to apply appropriate effects in consequences
+    //Call the event that the player has shot to apply appropriate effects 
     private void OnShoot()
     {
         Shot?.Invoke(this, new OnShootEventArgs{Position = transform.position});
@@ -131,7 +134,7 @@ public class PlayerShoot : NetworkBehaviour
         OnHit(hit);
     }
 
-    //Is called on the server when a bullet hit something
+    //Is called  when a bullet hit something
     private void OnHit(RaycastHit hit)
     {
         var hitCollider = hit.collider;
@@ -143,11 +146,15 @@ public class PlayerShoot : NetworkBehaviour
 
         if (hit.collider.CompareTag(GameManager.PlayerHeadTag))
         {
+            if(hitRootObject.GetComponent<HealthSystem>().IsDead) return;
+            
             CmdPlayerShot(hitRootObject, weapon.HeadShotDamages);
             Debug.Log("headshot ! Hit on " + hitRootObject.name);
         }
         else if (hit.collider.CompareTag(GameManager.PlayerTag))
         {
+            if(hitRootObject.GetComponent<HealthSystem>().IsDead) return;
+            
             CmdPlayerShot(hitRootObject, weapon.Damages);
             Debug.Log("hit " + hitRootObject.name);
         }
@@ -158,10 +165,6 @@ public class PlayerShoot : NetworkBehaviour
     {
         Debug.Log(hitGameObject.name + " has been shot.");
         
-        hitGameObject.GetComponent<Damageable>().Damage(damage);
-        
-        //Player player = GameManager.GetPlayer(_damagedPlayerID);
-        //player.RPCTakeDamage(_damage, _damageSourceID);
-
+        hitGameObject.GetComponent<Damageable>().Damage(damage, GetComponent<NetworkGamePlayer>().Username);
     }
 }

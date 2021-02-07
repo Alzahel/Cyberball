@@ -84,6 +84,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Setiings",
+                    "type": "Button",
+                    "id": "040527d5-c82e-401c-bbc3-a7c024032afa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -238,6 +246,17 @@
                     "processors": "",
                     "groups": "Keyboard & mouse",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ac907b2-cd70-4574-8f86-596226a121f3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Setiings",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

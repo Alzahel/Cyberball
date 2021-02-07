@@ -81,6 +81,9 @@ public class PlayerMovement : NetworkBehaviour
     //Cancel all special Movemennts : Sprint / Dodge / WallJump / Dash / Slide / wallrun...
     public void CancelAllMovements()
     {
+        Horizontal = 0;
+        Vertical = 0;
+        movementDirection = Vector3.zero;
         CancelSprint();
         if (IsCrouching) CancelCrouching();
     }

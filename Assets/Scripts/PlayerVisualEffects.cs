@@ -1,17 +1,30 @@
-﻿using Mirror;
+﻿using System;
+using Health;
+using Mirror;
+using Network;
 using UnityEngine;
 using Weapons;
 
 public class PlayerVisualEffects : NetworkBehaviour
 {
+    private NetworkGamePlayer player;
     private PlayerMovement playerMovement;
     private PlayerShoot playerShoot;
     private WeaponManager weaponManager;
+    private HealthSystem playerHealth;
+    
+    //prefab of the Death effect particles
+    [SerializeField] private GameObject deathEffect;
+    //prefab of the Death effect particles
+    [SerializeField] private GameObject spawnEffect;
+    
     private void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        player = GetComponent<NetworkGamePlayer>();
         playerShoot = GetComponent<PlayerShoot>();
         weaponManager = GetComponent<WeaponManager>();
+        playerHealth = GetComponent<HealthSystem>();
+        
     }
     #region Event Subscribing
 
@@ -19,32 +32,55 @@ public class PlayerVisualEffects : NetworkBehaviour
     {
         base.OnStartAuthority();
 
-        if (playerMovement != null)
-        { 
-            //playerMovement.OnSprint += PlaySprintAudio;
-        }
-
         if (playerShoot != null)
         {
             if(weaponManager != null) playerShoot.Shot += CmdSpawnShotEffect;
             playerShoot.Hit += CmdSpawnHitEffect;
         }
+
+        if (playerHealth != null) playerHealth.OnDeath += CmdSpawnDeathEffect;
+        
+        if (player != null) player.OnRespawn += CmdSpawnSpawnEffect;
     }
 
     public override void OnStopAuthority()
     {
         base.OnStopAuthority();
         
-        if (playerMovement != null)
-        {
-            //playerMovement.OnSprint -= PlaySprintAudio;
-        }
         if (playerShoot != null)
         {
             if(weaponManager != null) playerShoot.Shot -= CmdSpawnShotEffect;
             playerShoot.Hit -= CmdSpawnHitEffect;
         }
         
+        if (playerHealth != null) playerHealth.OnDeath -= CmdSpawnDeathEffect;
+    }
+    
+    [Command]
+    private void CmdSpawnSpawnEffect(object sender, EventArgs e)
+    {
+        RpcSpawnSpawnEffect(sender, e);
+    }
+    
+    
+    [ClientRpc]
+    private void RpcSpawnSpawnEffect(object sender, EventArgs e)
+    {
+        var spawnEffectIns = Instantiate(spawnEffect, player.transform.position, player.transform.rotation );
+        Destroy(spawnEffectIns, 3f);
+    }
+    
+    [Command]
+    private void CmdSpawnDeathEffect(object sender, HealthSystem.DeathEventArgs e)
+    {
+        RpcSpawnDeathEffect(sender, e);
+    }
+    
+    [ClientRpc]
+    private void RpcSpawnDeathEffect(object sender, HealthSystem.DeathEventArgs e)
+    {
+        var DeathEffectIns = Instantiate(deathEffect, player.transform.position,Quaternion.identity );
+        Destroy(DeathEffectIns, 3f);
     }
 
     [Command]

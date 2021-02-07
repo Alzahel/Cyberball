@@ -8,6 +8,41 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="csc.rsp" t="Include" />
+        <e p="Dark City 2" t="Include">
+          <e p="Assets" t="Include">
+            <e p="Source" t="Include">
+              <e p="Shaders" t="Include">
+                <e p="Billboard_Movie.shader" t="Include" />
+                <e p="Billboards1.shader" t="Include" />
+                <e p="Billboards_tilex4.shader" t="Include" />
+                <e p="Fog Shader.shader" t="Include" />
+                <e p="MK4_Holo1.shader" t="Include" />
+                <e p="MK4_laser.shader" t="Include" />
+                <e p="Movie.shader" t="Include" />
+                <e p="Neon Panner.shader" t="Include" />
+                <e p="New Amplify Shader.shader" t="Include" />
+                <e p="Police Lights.shader" t="Include" />
+                <e p="Rain.shader" t="Include" />
+                <e p="Rain_alpha.shader" t="Include" />
+                <e p="Rain_Paralax.shader" t="Include" />
+                <e p="Second UV AO.shader" t="Include" />
+                <e p="Standard Color Mask.shader" t="Include" />
+                <e p="Standard Panner.shader" t="Include" />
+                <e p="Street_Dirt_triplanar2.shader" t="Include" />
+                <e p="Street_Rain_triplanar1.shader" t="Include" />
+                <e p="StreetLights.shader" t="Include" />
+                <e p="StreetLights2 Add.shader" t="Include" />
+                <e p="StreetLights2.shader" t="Include" />
+                <e p="StreetLights3.shader" t="Include" />
+                <e p="Windows.shader" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Demo" t="Include">
+            <e p="!README Post-Pro_Info_demo.txt" t="Include" />
+          </e>
+          <e p="InfoMK4.txt" t="Include" />
+        </e>
         <e p="Enhanced Hierarchy" t="Include">
           <e p="Editor" t="Include">
             <e p="After.cs" t="Include" />
@@ -614,20 +649,35 @@
           <e p="PlayerAudio.cs" t="Include" />
           <e p="PlayerEnergy.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
+          <e p="PlayerNetworkCommands.cs" t="Include" />
           <e p="PlayerShoot.cs" t="Include" />
           <e p="PlayerUISetup.cs" t="Include" />
           <e p="PlayerVisualEffects.cs" t="Include" />
           <e p="Spawn" t="Include">
+            <e p="BallSpawner.cs" t="Include" />
             <e p="PlayerSpawnPoint.cs" t="Include" />
             <e p="PlayerSpawnSystem.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
+            <e p="AmmunitionCount.cs" t="Include" />
+            <e p="DeathBar.cs" t="Include" />
             <e p="EnergyBar.cs" t="Include" />
+            <e p="GameHUD.cs" t="Include" />
             <e p="HealthBar.cs" t="Include" />
+            <e p="Killfeed" t="Include">
+              <e p="Killfeed.cs" t="Include" />
+              <e p="KillfeedItem.cs" t="Include" />
+            </e>
+            <e p="ScoreUpdate.cs" t="Include" />
+            <e p="UISettings.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
+            <e p="AddFullMeshCollider.cs" t="Include" />
             <e p="BarFill.cs" t="Include" />
             <e p="CameraFacingObject.cs" t="Include" />
+            <e p="DisableIfLocalPlayer.cs" t="Include" />
+            <e p="DontDestroyOnLoad.cs" t="Include" />
+            <e p="PlayerPreferences.cs" t="Include" />
             <e p="SetLayerRecursively.cs" t="Include" />
             <e p="Timer.cs" t="Include" />
           </e>

@@ -1,6 +1,8 @@
-﻿using Cinemachine;
+﻿using System;
+using Cinemachine;
 using Mirror;
 using UnityEngine;
+using Utils;
 
 namespace Cyberball.Camera
 {
@@ -22,6 +24,13 @@ namespace Cyberball.Camera
         private void Awake()
         {
             playerCamera.gameObject.SetActive(false);
+            PlayerPreferences.SettingsDatasChanged += SetSensitivity;
+            SetSensitivity();
+        }
+
+        private void OnDestroy()
+        {
+            PlayerPreferences.SettingsDatasChanged -= SetSensitivity;
         }
 
         private void setXAxis()
@@ -48,9 +57,7 @@ namespace Cyberball.Camera
             //needs to be called here because on the first Enable authority isn't given yet
             setXAxis();
         }
-    
-
-        // Update is called once per frame
+        
         void FixedUpdate()
         {//Control the follow of the camera
         
@@ -74,6 +81,13 @@ namespace Cyberball.Camera
                 bool isAiming = Input.GetMouseButton(1);
                 //animator.SetBool(isAimingParam, isAiming);
             }
+        }
+
+        private void SetSensitivity()
+        {
+            var datas = PlayerPreferences.GetSettings();
+            xAxis.m_MaxSpeed = datas.XCameraSensitivity * datas.MouseSensitivity;
+            yAxis.m_MaxSpeed = datas.YCameraSensitivity * datas.MouseSensitivity;
         }
 
         /* private void OnAim(InputValue value)

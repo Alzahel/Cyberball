@@ -53,12 +53,12 @@ public class PlayerAnimation : NetworkBehaviour
         
     private void SprintAnimation(object sender, PlayerMovement.OnSprintEventArgs e)
     {
-        anim.SetBool(IsSprinting, e.IsSprinting);
+        anim.SetBool(IsSprinting,  e.IsSprinting);
     }
 
-    private void OnCrouchAnimation(object sender, EventArgs e)
+    private void OnCrouchAnimation(object sender, PlayerMovement.OnCrouchEventArgs e)
     {
-        anim.SetBool(IsCrouching, true);
+        anim.SetBool(IsCrouching, e.IsCrouching);
     }
 
     #endregion

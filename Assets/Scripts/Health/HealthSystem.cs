@@ -1,6 +1,15 @@
 ﻿using System;
+using System.Collections;
+using Cyberball;
+using Cyberball.Spawn;
+using Managers;
 using Mirror;
+using Network;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Weapons;
+using Object = UnityEngine.Object;
 
 namespace Health
 {
@@ -9,11 +18,17 @@ namespace Health
         
 
         [SerializeField] private float maxHealth = 100f;
+        [SerializeField] private TextMeshProUGUI deathUI;
 
         [SyncVar(hook = nameof(HandleHealthChanged))]
         private float currentHealth;
 
-        public static event EventHandler<DeathEventArgs> OnDeath;
+
+        [SerializeField] private GameObject[] gameObjectsDesactivateOnDeath;
+        [SerializeField] private Behaviour[] behavioursDesactivateOnDeath;
+        public float TimeRemainingBeforeRespawn { get; set; } = 0;
+
+        public event EventHandler<DeathEventArgs> OnDeath;
         public event EventHandler<HealthChangedEventArgs> OnHealthChanged;
         
         public class HealthChangedEventArgs
@@ -23,7 +38,7 @@ namespace Health
         }
         public class DeathEventArgs
         {
-            public NetworkConnection ConnectionToClient;
+            public GameObject DeadObject;
         }
 
         public bool IsDead => currentHealth == 0f;
@@ -36,7 +51,7 @@ namespace Health
         [ServerCallback]
         private void OnDestroy()
         {
-            OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
+            OnDeath?.Invoke(this, new DeathEventArgs { DeadObject = gameObject});
         }
         
         public float GetHealthPercent()
@@ -53,7 +68,7 @@ namespace Health
         }
     
         [Server]
-        public void Remove(float value)
+        public void Remove(float value, string source)
         {
             currentHealth -= value;
             
@@ -61,9 +76,7 @@ namespace Health
             
             if (currentHealth <= 0)
             {
-                OnDeath?.Invoke(this, new DeathEventArgs { ConnectionToClient = connectionToClient });
-
-                RPCHandleDeath();
+                HandleDeath(source);
             } 
         }
         
@@ -75,16 +88,91 @@ namespace Health
         private void HandleHealthChanged(float oldValue, float newValue)
         {
             OnHealthChanged?.Invoke(this, new HealthChangedEventArgs
+                {
+                    MaxHealth = maxHealth,
+                    CurrentHealth = currentHealth
+                });
+        }
+        
+        [Server]
+        private void HandleDeath(string source)
         {
-            MaxHealth = maxHealth,
-            CurrentHealth = currentHealth
-        });
+           
+            //Handle death on clients
+            RpcHandleDeath(source);
+            
+            //do not respawn if the round is Over
+            if(!GameManager.Instance.IsRoundOver) PlayerSpawnSystem.Instance.SpawnPlayer(gameObject, 
+                PlayerSpawnSystem.Instance.GetSpawnPos(GetComponent<NetworkGamePlayer>().TeamID), MatchSettings.RespawnTime);
+
+            StartCoroutine(CalculateDeathTimeReamining());
+        }
+        
+        [ClientRpc]
+        private void RpcHandleDeath(string source)
+        {
+            OnDeath?.Invoke(this, new DeathEventArgs { DeadObject = gameObject});
+            GameManager.Instance.PlayerKilled(gameObject.name, source);
+            
+            DesactivateOnDeath();
+            
+            //Handle deathUI for the dead player
+            if (deathUI == null)
+            {
+                Debug.LogWarning("DeathUI is missing in HealthSystem");
+                return;
+            }
+            
+            if (hasAuthority)
+            {
+                deathUI.gameObject.SetActive(true);
+                deathUI.text = "YOU HAVE BEEN KILLED BY <i><color=#ff0000><b>" + source + "</b></color></i>";
+            }
+           
         }
 
-        [ClientRpc]
-        private void RPCHandleDeath()
+        private void DesactivateOnDeath()
         {
-            gameObject.SetActive(false);
+            GetComponent<PlayerMovement>().CancelAllMovements();
+            GetComponent<CapsuleCollider>().enabled = false;
+            
+            foreach (GameObject obj in gameObjectsDesactivateOnDeath)
+            {
+                obj.SetActive(false);
+            }
+            
+            foreach (Behaviour obj in behavioursDesactivateOnDeath)
+            {
+                obj.enabled = false;
+            }
+        }
+        
+        private IEnumerator CalculateDeathTimeReamining()
+        {
+            for (TimeRemainingBeforeRespawn = MatchSettings.RespawnTime; TimeRemainingBeforeRespawn > 0; TimeRemainingBeforeRespawn -= Time.deltaTime)
+            {
+                yield return null;
+            }
+
+            TimeRemainingBeforeRespawn = 0;
+        }
+        
+        public void ReactivateOnRespawn()
+        {
+            ResetHealth();
+            GetComponent<CapsuleCollider>().enabled = true;
+            
+            foreach (GameObject obj in gameObjectsDesactivateOnDeath)
+            {
+                obj.SetActive(true);
+            }
+            
+            foreach (Behaviour obj in behavioursDesactivateOnDeath)
+            {
+                obj.enabled = true;
+            }
+            
+            if(hasAuthority && deathUI != null) deathUI.gameObject.SetActive(false);
         }
 
         private void ClampHealth()

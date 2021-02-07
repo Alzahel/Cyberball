@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Health;
 using Managers;
 using Mirror;
+using Mirror.Examples.Chat;
 using Network;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Weapons;
 
 namespace Cyberball.Spawn
 {
@@ -12,52 +17,66 @@ namespace Cyberball.Spawn
 
         private void Awake()
         {
-            if (Instance = null) Instance = this;
+            if (Instance == null) Instance = this;
 
         }
 
         #region Register Spawn Points
 
-        private static List<PlayerSpawnPoint> spawnPoints = new List<PlayerSpawnPoint>();
+        private static readonly List<PlayerSpawnPoint> SpawnPoints = new List<PlayerSpawnPoint>();
 
-        public static void AddSpawnPoint(PlayerSpawnPoint _spawnPoint)
+        public static void AddSpawnPoint(PlayerSpawnPoint spawnPoint)
         {
-            spawnPoints.Add(_spawnPoint);
+            SpawnPoints.Add(spawnPoint);
         }
 
-        public static void RemoveSpawnPoint(PlayerSpawnPoint _spawnPoint) => spawnPoints.Remove(_spawnPoint);
+        public static void RemoveSpawnPoint(PlayerSpawnPoint spawnPoint) => SpawnPoints.Remove(spawnPoint);
 
         #endregion
 
         #region Spawn Players
 
-        public void SpawnAllPlayers()
+        [Server]
+        public void SpawnAllPlayers(float timeBeforeRespawn)
         {
-            foreach (NetworkGamePlayer player in GameManager.Instance.Players)
+            foreach (var player in GameManager.Instance.Players)
             {
-                SpawnPlayer(player.GetComponent<NetworkIdentity>().connectionToClient);
+                var spawnPosition = GetSpawnPos(player.TeamID);
+                SpawnPlayer(player.gameObject, spawnPosition, timeBeforeRespawn);
             }
         }
 
         // We send the order to the client that own authority on the player to set his position to spawn pos
-        [TargetRpc]
-        public void SpawnPlayer(NetworkConnection conn)
+        [ClientRpc]
+        public void SpawnPlayer(GameObject player, Transform spawnPosition, float timeBeforeRespawn)
         {
-            NetworkGamePlayer player = conn.identity.GetComponent<NetworkGamePlayer>();
-
-            Transform spawnPosition = getSpawnPos(player.TeamID);
-
-             if(spawnPosition != null)
+            // NetworkGamePlayer player = conn.identity.GetComponent<NetworkGamePlayer>();
+            StartCoroutine(Spawn(player, spawnPosition, timeBeforeRespawn));
+        }
+        
+        private IEnumerator Spawn(GameObject player,Transform spawnPosition, float timeBeforeRespawn)
+        {
+            yield return new WaitForSeconds(timeBeforeRespawn);
+            
+            if (spawnPosition != null)
             {
                 player.transform.SetPositionAndRotation(spawnPosition.position, spawnPosition.rotation);
                 player.gameObject.SetActive(true);
+                player.GetComponent<NetworkGamePlayer>().Respawn();
+                
+                //Reset all players components
+                player.GetComponent<HealthSystem>().ReactivateOnRespawn();
+                player.GetComponent<EnergySystem>().ResetEnergy();
+                player.GetComponent<WeaponManager>().ResetAmmunition();
             }
         }
-        public Transform getSpawnPos(int teamID)
+        
+        
+        public Transform GetSpawnPos(int teamID)
         {
             PlayerSpawnPoint spawnPoint = null;
 
-            foreach (PlayerSpawnPoint _spawnPoint in spawnPoints)
+            foreach (PlayerSpawnPoint _spawnPoint in SpawnPoints)
             {
                 if (_spawnPoint.TeamID == teamID) spawnPoint = _spawnPoint;
             }

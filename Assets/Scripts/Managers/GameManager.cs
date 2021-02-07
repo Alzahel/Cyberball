@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Cyberball;
 using Cyberball.Spawn;
 using Mirror;
 using Network;
@@ -8,14 +10,14 @@ using UnityEngine.SceneManagement;
 
 namespace Managers
 {
-    class GameManager : NetworkBehaviour
+    internal class GameManager : NetworkBehaviour
     {
         public static GameManager Instance;
 
         [SerializeField] private List<NetworkGamePlayer> players = new List<NetworkGamePlayer>();
 
         public List<NetworkGamePlayer> Players => players;
-        private bool IsRoundOver { get; set; }
+        public bool IsRoundOver { get; set; }
 
         #region Constantes
         
@@ -25,26 +27,22 @@ namespace Managers
         #endregion
         
         #region Unity Callbacks
-
+        
         private void Awake()
         {
             if (Instance == null) Instance = this;
         }
-
-        private void Start()
-        {
-            DontDestroyOnLoad(this);
-        }
-
-        [Server]
+        
         private void Update()
         {
+            if (!isServer) return;
+            
             if (SceneManager.GetActiveScene().name.StartsWith("Scene_Map"))
                 if (!allPlayersLoaded) AllPlayersLoadedCheck();
-                else if (IsRoundOver || currentRound == 0) StartNewRound();
+                else if (currentRound == 0 && !IsRoundOver) StartCoroutine(StartNewRound());
             
             
-            if(Input.GetKeyDown(KeyCode.R)) StartNewRound();
+        //    if(Input.GetKeyDown(KeyCode.R)) StartCoroutine(StartNewRound());
                  
         }
 
@@ -54,7 +52,16 @@ namespace Managers
 
         private bool allPlayersLoaded;
         private int currentRound;
-  
+
+        public float RemainingTimeBeforeNextRound { get; set; } = MatchSettings.TimeBetweenRounds;
+
+        public event EventHandler<NewRoundLaunchedEventArgs> NewRoundLaunched;
+        public event EventHandler<EventArgs> NewRoundStarted;
+
+        public class NewRoundLaunchedEventArgs
+        {
+            public float RemainingTimeBeforeNextRound;
+        }
         [Server]
         private void AllPlayersLoadedCheck()
         {
@@ -68,48 +75,91 @@ namespace Managers
         }
 
         [Server]
-        private void StartNewRound()
+        private IEnumerator StartNewRound()
         {
             Debug.Log("New round setup");
+            
+            IsRoundOver = true;
+            //We stop coroutines of the spawn system in order to not respawn players when a round is over
+            PlayerSpawnSystem.Instance.StopAllCoroutines();
+            
+            yield return new WaitForSeconds(2);
 
+            
+            RemainingTimeBeforeNextRound = MatchSettings.TimeBetweenRounds;
+           
+            while (RemainingTimeBeforeNextRound > 0) {
+                
+                NewRoundLaunched?.Invoke(this, new NewRoundLaunchedEventArgs{RemainingTimeBeforeNextRound = RemainingTimeBeforeNextRound});
+                
+                yield return new WaitForSeconds (1);
+                
+                RemainingTimeBeforeNextRound--;
+            }
+            
+            NewRoundStarted?.Invoke(this, EventArgs.Empty);
+            
+            PlayerSpawnSystem.Instance.SpawnAllPlayers(0);
+            
             IsRoundOver = false;
             currentRound++;
-
-            StartCoroutine(StartRound());
+            
+            Debug.Log("Round " + currentRound + " started !" );
         }
 
-
-        [SerializeField] private float timeBeforeRespawn =5;
-        [Server]
-        private IEnumerator StartRound()
-        {
-            yield return new WaitForSeconds(timeBeforeRespawn);
-            Debug.Log("Round Started");
-
-            PlayerSpawnSystem.Instance.SpawnAllPlayers();
-
-        }
         #endregion
 
         #region Score management
 
         [SyncVar] private int team1Score;
         [SyncVar] private int team2Score;
+        public int Team1Score
+        {
+            get => team1Score;
+        }
 
+        public int Team2Score
+        {
+            get => team2Score;
+        }
+        
+        public event EventHandler<EventArgs> GoalScored;
+        
         [Server]
         public void ScoreGoal(int teamID)
         {
             if (IsRoundOver) return;
 
+            RpcScoreGoal(teamID);
+            GoalScored?.Invoke(this, EventArgs.Empty);
+
+            StartCoroutine(StartNewRound());
+            
+            Debug.Log("team 1 : "+ team1Score + "team 2 : " + team2Score );
+        }
+
+        [ClientRpc]
+        private void RpcScoreGoal(int teamID)
+        {
             if (teamID == 1) team1Score++;
             else team2Score++;
+        }
 
-            IsRoundOver = true;
-            
-            //StartCoroutine(ResetAfterGoal());
+        #endregion
 
+        #region GlobalEvents
 
-            Debug.Log("team 1 : "+ team1Score + "team 2 : " + team2Score );
+        public event EventHandler<PlayerKilledEventArgs> OnPlayerKilled;
+        
+        public class PlayerKilledEventArgs
+        {
+            public string PlayerKilled;
+            public string Source;
+        }
+
+        public void PlayerKilled(string playerKilled, string source)
+        {
+            OnPlayerKilled?.Invoke(this, new PlayerKilledEventArgs() { PlayerKilled = playerKilled, Source = source});
         }
 
         #endregion

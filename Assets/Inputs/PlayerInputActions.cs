@@ -97,6 +97,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Setiings"",
+                    ""type"": ""Button"",
+                    ""id"": ""040527d5-c82e-401c-bbc3-a7c024032afa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -253,6 +261,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ac907b2-cd70-4574-8f86-596226a121f3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Setiings"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -288,6 +307,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_CrouchInput = m_Player.FindAction("CrouchInput", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Setiings = m_Player.FindAction("Setiings", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -347,6 +367,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_CrouchInput;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Setiings;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -361,6 +382,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @CrouchInput => m_Wrapper.m_Player_CrouchInput;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Setiings => m_Wrapper.m_Player_Setiings;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -400,6 +422,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Setiings.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetiings;
+                @Setiings.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetiings;
+                @Setiings.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetiings;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -434,6 +459,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @Setiings.started += instance.OnSetiings;
+                @Setiings.performed += instance.OnSetiings;
+                @Setiings.canceled += instance.OnSetiings;
             }
         }
     }
@@ -459,5 +487,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnCrouchInput(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnSetiings(InputAction.CallbackContext context);
     }
 }

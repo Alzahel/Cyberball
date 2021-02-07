@@ -17,7 +17,7 @@ public class EnergySystem : MonoBehaviour
     }
     private void Start()
     {
-        currentEnergy = MaxEnergy;
+        ResetEnergy();
     }
 
     private void Update()
@@ -25,6 +25,11 @@ public class EnergySystem : MonoBehaviour
         if(currentEnergy <= 0) EnergyEmptied();
     }
 
+    public void ResetEnergy()
+    {
+        currentEnergy = MaxEnergy;
+    }
+    
     private void ClampEnergy()
     {
         //Makes sure energyAmount can't go out the boundaries of 0 / max Energy

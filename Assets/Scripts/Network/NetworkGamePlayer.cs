@@ -1,7 +1,9 @@
 ﻿using System;
+using Health;
 using Managers;
 using Mirror;
 using UnityEngine;
+using Weapons;
 
 namespace Network
 {
@@ -10,20 +12,15 @@ namespace Network
 
         #region player Datas
 
-        [SyncVar] private string username;
-        [SyncVar] public int teamID;
-        
         //score
         [SyncVar] private int kills;
         [SyncVar] private int deaths;
 
-        private bool isDead;
+        public event EventHandler OnRespawn;
 
-        public event EventHandler OnAuthorityChanged;
+        [field: SyncVar] public int TeamID { get; set; }
 
-        public int TeamID { get => teamID; set => teamID = value; }
-        public string Username { get =>username; set => username = value; }
-        public bool IsDead { get => isDead; set => isDead = value; }
+        [field: SyncVar] public string Username { get; set; }
 
         #endregion 
 
@@ -39,22 +36,19 @@ namespace Network
             base.OnStartServer();
 
             GameManager.Instance.Players.Add(this);
+            
+        }
+
+        public override void OnStartClient()
+        {
+            gameObject.name = Username;
         }
 
         #endregion
 
-        #region Authority
-
-        public override void OnStartAuthority()
+        public void Respawn()
         {
-            OnAuthorityChanged?.Invoke(this, EventArgs.Empty);
+            OnRespawn?.Invoke(this, EventArgs.Empty);
         }
-
-        public override void OnStopAuthority()
-        {
-            OnAuthorityChanged?.Invoke(this, EventArgs.Empty);
-        }
-
-        #endregion
     }
 }
