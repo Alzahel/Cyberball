@@ -29,7 +29,7 @@ R : Recharger
 
 <details>
   <summary>Rejoindre un Lobby</summary>
-  <img src=(https://media.giphy.com/media/nwwUzJ9k8uYQc9Anyv/giphy.gif>
+  <img src=https://media.giphy.com/media/nwwUzJ9k8uYQc9Anyv/giphy.gif>
 </details>
 
 <details>
