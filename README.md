@@ -49,7 +49,7 @@ R : Recharger
 
 <details>
   <summary>Mouvements  sprint  saut  accroupissement</summary>
-  <img src=https://media.giphy.com/media/IMwiT2WuSaBvrYrSuN/giphy.gif>
+  <img src=https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif>
 </details>
 
 <details>
@@ -65,11 +65,6 @@ R : Recharger
 <details>
   <summary>Voler la balle aux ennemis</summary>
   <img src=https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif>
-</details>
-
-<details>
-  <summary>Voler la balle aux ennemis</summary>
-  <img src=https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif>
 </details>
 
 ## Instructions d'installation
