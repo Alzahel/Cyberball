@@ -81,5 +81,6 @@ Pour se connecter à plusieurs en simultané, le 1er joueur doit sélectionner "
 Une fois une instance Host lancée, les autres devront sélection "Join Lobby" > Join, en laissant localhost (uniquement si vous êtes sur le même réseau).  
 
 Pour se connecter de réseaux différents, il faudra en revanche mettre en place une redirection de port et entrez l'adresse IP de l'Host.  
+[Voici un guide sur la redirection de port (en anglais)](https://www.youtube.com/watch?v=jfSLxs40sIw)
 
 Pour tester les fonctionnalités réseaux seul, lancez simplement plusieurs instances en LocalHost.
