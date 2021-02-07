@@ -67,6 +67,8 @@ R : Recharger
   <img src=https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif>
 </details>
 
+![alt text](https://media.giphy.com/media/Rw40BMeOPVebuQMv5H/giphy.gif)
+
 ## Instructions d'installation
 
 Pour essayer le jeu, téléchargez simplement le projet et lancez Builds/mainBuild/Cyberball.exe  
