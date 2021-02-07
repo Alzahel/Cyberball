@@ -59,7 +59,7 @@ R : Recharger
 
 <details>
   <summary>Rammasser la balle et marquer</summary>
-  <img src=https://media.giphy.com/media/CiYAYWbQeO7RBhvaK9/giphy.gif>
+  <img src=https://giphy.com/gifs/CiYAYWbQeO7RBhvaK9/html5>
 </details>
 
 <details>
