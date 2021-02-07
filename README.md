@@ -69,7 +69,7 @@ R : Recharger
 
 <details>
   <summary>Marque un Touchdown</summary>
-  <img src=https://media.giphy.com/media/Tg0iZacq8MpXKS6E7P/giphy.gif>
+  <img src="https://media.giphy.com/media/Tg0iZacq8MpXKS6E7P/giphy.gif">
 </details>
 
 
