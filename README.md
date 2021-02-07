@@ -48,7 +48,7 @@ R : Recharger
 </details>
 
 <details>
-  <summary>Mouvements / sprint / saut / accroupissement</summary>
+  <summary>Mouvements  sprint  saut  accroupissement</summary>
   <img src=https://media.giphy.com/media/IMwiT2WuSaBvrYrSuN/giphy.gif>
 </details>
 
