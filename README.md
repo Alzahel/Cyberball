@@ -58,14 +58,20 @@ R : Recharger
 </details>
 
 <details>
-  <summary>Rammasser la balle et marquer</summary>
-  <img src=https://giphy.com/gifs/CiYAYWbQeO7RBhvaK9/html5>
+  <summary>Rammasser la balle</summary>
+  <img src=https://media.giphy.com/media/bjcmnEGnPmRBmrcdzv/giphy.gif>
 </details>
 
 <details>
   <summary>Voler la balle aux ennemis</summary>
   <img src=https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif>
 </details>
+
+<details>
+  <summary>Marque un Touchdown</summary>
+  <img src=https://media.giphy.com/media/Tg0iZacq8MpXKS6E7P/giphy.gif>
+</details>
+
 
 ## Instructions d'installation
 
