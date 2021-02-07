@@ -22,8 +22,6 @@ R : Recharger
 
 ## Démos
 
-:warning: Vidéos en cours de réalisation
-
 <details>
   <summary>Host un Lobby</summary>
   <img src="https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif">
@@ -50,8 +48,8 @@ R : Recharger
 </details>
 
 <details>
-  <summary>Mouvement / saut / Accroupissement</summary>
-
+  <summary>Mouvements / saut / Accroupissement</summary>
+  <img src=https://media.giphy.com/media/Rw40BMeOPVebuQMv5H/giphy.gif>
 </details>
 
 <details>
@@ -60,11 +58,8 @@ R : Recharger
 </details>
 
 <details>
-  <summary>Réapparation après la mort</summary>
-</details>
-
-<details>
   <summary>Rammasser la balle et marquer</summary>
+  <img src=https://media.giphy.com/media/CiYAYWbQeO7RBhvaK9/giphy.gif>
 </details>
 
 <details>
