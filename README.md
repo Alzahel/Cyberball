@@ -67,6 +67,11 @@ R : Recharger
   <img src=https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif>
 </details>
 
+<details>
+  <summary>Voler la balle aux ennemis</summary>
+  <img src=https://media.giphy.com/media/IMwiT2WuSaBvrYrSuN/giphy.gif>
+</details>
+
 ## Instructions d'installation
 
 Pour essayer le jeu, téléchargez simplement le projet et lancez Builds/mainBuild/Cyberball.exe  
