@@ -24,8 +24,6 @@ R : Recharger
 
 :warning: Vidéos en cours de réalisation
 
-![alt text](https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif)
-
 <details>
   <summary>Host un Lobby</summary>
   <img src="https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif">
@@ -33,22 +31,22 @@ R : Recharger
 
 <details>
   <summary>Rejoindre un Lobby</summary>
-![alt text](https://media.giphy.com/media/nwwUzJ9k8uYQc9Anyv/giphy.gif)
+  <img src=(https://media.giphy.com/media/nwwUzJ9k8uYQc9Anyv/giphy.gif>
 </details>
 
 <details>
   <summary>Changer d'équipe</summary>
-![alt text](https://media.giphy.com/media/N6MKMzLCXrpVolIgvF/giphy.gif)
+  <img src=https://media.giphy.com/media/N6MKMzLCXrpVolIgvF/giphy.gif>
 </details>
 
 <details>
   <summary>Statut "prêt" des joueurs pour lancer la game</summary>
-![alt text](https://media.giphy.com/media/mNC6Zxd9WPGpdZvd96/giphy.gif)
+  <img src=https://media.giphy.com/media/mNC6Zxd9WPGpdZvd96/giphy.gif>
 </details>
 
 <details>
   <summary>Débuter la partie</summary>
-![alt text](https://media.giphy.com/media/nouVdrADJ0MgmOZpZm/giphy.gif)
+  <img src=https://media.giphy.com/media/nouVdrADJ0MgmOZpZm/giphy.gif>
 </details>
 
 <details>
@@ -58,7 +56,7 @@ R : Recharger
 
 <details>
   <summary>Tirs, tirs , tirs à la tête, kill, respawn</summary>
- ![alt text](https://media.giphy.com/media/UVfUAhWpsmkDTSYGZa/giphy.gif)
+  <img src=https://media.giphy.com/media/UVfUAhWpsmkDTSYGZa/giphy.gif>
 </details>
 
 <details>
@@ -71,7 +69,7 @@ R : Recharger
 
 <details>
   <summary>Voler la balle aux ennemis</summary>
-![alt text](https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif)
+  <img src=https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif>
 </details>
 
 ## Instructions d'installation
