@@ -49,7 +49,7 @@ R : Recharger
 
 <details>
   <summary>Débuter la partie</summary>
-  <img src=https://media.giphy.com/media/nouVdrADJ0MgmOZpZm/giphy.gif>
+  <img src=https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif>
 </details>
 
 <details>
