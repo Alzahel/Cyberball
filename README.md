@@ -28,7 +28,7 @@ R : Recharger
 
 <details>
   <summary>Host un Lobby</summary>
-![alt text](https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif)
+  <img src="https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif">
 </details>
 
 <details>
