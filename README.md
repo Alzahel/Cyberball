@@ -24,6 +24,8 @@ R : Recharger
 
 :warning: Vidéos en cours de réalisation
 
+![alt text](https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif)
+
 <details>
   <summary>Host un Lobby</summary>
 ![alt text](https://media.giphy.com/media/VTWXFDAsvFxPnNGcMX/giphy.gif)
