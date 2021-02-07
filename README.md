@@ -48,8 +48,8 @@ R : Recharger
 </details>
 
 <details>
-  <summary>Débuter la partie</summary>
-  <img src=https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif>
+  <summary>Mouvements / sprint / saut / accroupissement</summary>
+  <img src=https://media.giphy.com/media/IMwiT2WuSaBvrYrSuN/giphy.gif>
 </details>
 
 <details>
