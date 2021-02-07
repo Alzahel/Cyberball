@@ -49,7 +49,7 @@ R : Recharger
 
 <details>
   <summary>Mouvements / saut / Accroupissement</summary>
-  <img src=https://gph.is/g/Z8omDLN>
+  <img src=https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif>
 </details>
 
 <details>
