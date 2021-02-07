@@ -69,7 +69,7 @@ R : Recharger
 
 <details>
   <summary>Voler la balle aux ennemis</summary>
-  <img src=https://media.giphy.com/media/IMwiT2WuSaBvrYrSuN/giphy.gif>
+  <img src=https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif>
 </details>
 
 ## Instructions d'installation
