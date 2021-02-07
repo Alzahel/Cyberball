@@ -67,7 +67,7 @@ R : Recharger
   <img src=https://media.giphy.com/media/k1VnJ1VFXR2pXGHH0E/giphy.gif>
 </details>
 
-![alt text](https://media.giphy.com/media/Rw40BMeOPVebuQMv5H/giphy.gif)
+![alt text](https://media.giphy.com/media/gYBaVh1nKzkymJ77Su/giphy.gif)
 
 ## Instructions d'installation
 
