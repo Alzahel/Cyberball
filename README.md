@@ -75,7 +75,7 @@ R : Recharger
 
 ## Instructions d'installation
 
-Pour essayer le jeu, téléchargez simplement le projet et lancez Builds/mainBuild/Cyberball.exe  
+Pour essayer le jeu, téléchargez simplement le build sur https://alzahel.itch.io/cyberball et lancez Builds/mainBuild/Cyberball.exe  
 
 Pour se connecter à plusieurs en simultané, le 1er joueur doit sélectionner "Host".  
 Une fois une instance Host lancée, les autres devront sélection "Join Lobby" > Join, en laissant localhost (uniquement si vous êtes sur le même réseau).  
