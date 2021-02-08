@@ -146,14 +146,14 @@ public class PlayerShoot : NetworkBehaviour
 
         if (hit.collider.CompareTag(GameManager.PlayerHeadTag))
         {
-            if(hitRootObject.GetComponent<HealthSystem>().IsDead) return;
+            if(hitRootObject.GetComponent<HealthSystem>().IsDead || hitRootObject.GetComponent<NetworkGamePlayer>().TeamID == GetComponent<NetworkGamePlayer>().TeamID) return;
             
             CmdPlayerShot(hitRootObject, weapon.HeadShotDamages);
             Debug.Log("headshot ! Hit on " + hitRootObject.name);
         }
         else if (hit.collider.CompareTag(GameManager.PlayerTag))
         {
-            if(hitRootObject.GetComponent<HealthSystem>().IsDead) return;
+            if(hitRootObject.GetComponent<HealthSystem>().IsDead || hitRootObject.GetComponent<NetworkGamePlayer>().TeamID == GetComponent<NetworkGamePlayer>().TeamID) return;
             
             CmdPlayerShot(hitRootObject, weapon.Damages);
             Debug.Log("hit " + hitRootObject.name);

@@ -274,6 +274,33 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DeadPlayer"",
+            ""id"": ""71138131-ce3a-4470-95ff-7b40351daf0f"",
+            ""actions"": [
+                {
+                    ""name"": ""ChangeCam"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a3bd6c4-a647-483a-8943-24daef2af99b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""441c918f-3b3f-44f9-821a-7ab54bb4fb37"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & mouse"",
+                    ""action"": ""ChangeCam"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -308,6 +335,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_CrouchInput = m_Player.FindAction("CrouchInput", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Setiings = m_Player.FindAction("Setiings", throwIfNotFound: true);
+        // DeadPlayer
+        m_DeadPlayer = asset.FindActionMap("DeadPlayer", throwIfNotFound: true);
+        m_DeadPlayer_ChangeCam = m_DeadPlayer.FindAction("ChangeCam", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -466,6 +496,39 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // DeadPlayer
+    private readonly InputActionMap m_DeadPlayer;
+    private IDeadPlayerActions m_DeadPlayerActionsCallbackInterface;
+    private readonly InputAction m_DeadPlayer_ChangeCam;
+    public struct DeadPlayerActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public DeadPlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ChangeCam => m_Wrapper.m_DeadPlayer_ChangeCam;
+        public InputActionMap Get() { return m_Wrapper.m_DeadPlayer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DeadPlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IDeadPlayerActions instance)
+        {
+            if (m_Wrapper.m_DeadPlayerActionsCallbackInterface != null)
+            {
+                @ChangeCam.started -= m_Wrapper.m_DeadPlayerActionsCallbackInterface.OnChangeCam;
+                @ChangeCam.performed -= m_Wrapper.m_DeadPlayerActionsCallbackInterface.OnChangeCam;
+                @ChangeCam.canceled -= m_Wrapper.m_DeadPlayerActionsCallbackInterface.OnChangeCam;
+            }
+            m_Wrapper.m_DeadPlayerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ChangeCam.started += instance.OnChangeCam;
+                @ChangeCam.performed += instance.OnChangeCam;
+                @ChangeCam.canceled += instance.OnChangeCam;
+            }
+        }
+    }
+    public DeadPlayerActions @DeadPlayer => new DeadPlayerActions(this);
     private int m_KeyboardmouseSchemeIndex = -1;
     public InputControlScheme KeyboardmouseScheme
     {
@@ -488,5 +551,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnCrouchInput(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnSetiings(InputAction.CallbackContext context);
+    }
+    public interface IDeadPlayerActions
+    {
+        void OnChangeCam(InputAction.CallbackContext context);
     }
 }

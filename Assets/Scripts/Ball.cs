@@ -84,7 +84,6 @@ public class Ball : NetworkBehaviour
 
     private void ResetBall()
     {
-        Debug.Log("reset");
         DropBall();
         transform.position = spawnPosition.position;
     }

@@ -261,6 +261,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "DeadPlayer",
+            "id": "71138131-ce3a-4470-95ff-7b40351daf0f",
+            "actions": [
+                {
+                    "name": "ChangeCam",
+                    "type": "Button",
+                    "id": "5a3bd6c4-a647-483a-8943-24daef2af99b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "441c918f-3b3f-44f9-821a-7ab54bb4fb37",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard & mouse",
+                    "action": "ChangeCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

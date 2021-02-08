@@ -647,6 +647,7 @@
           </e>
           <e p="PlayerAnimation.cs" t="Include" />
           <e p="PlayerAudio.cs" t="Include" />
+          <e p="PlayerCam.cs" t="Include" />
           <e p="PlayerEnergy.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="PlayerNetworkCommands.cs" t="Include" />

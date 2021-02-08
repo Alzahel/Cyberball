@@ -142,6 +142,9 @@ namespace Health
             GetComponent<PlayerMovement>().CancelAllMovements();
             GetComponent<CapsuleCollider>().enabled = false;
             
+            var playerInput = GetComponent<PlayerInput>();
+            playerInput.currentActionMap = playerInput.actions.FindActionMap("DeadPlayer");
+            
             foreach (GameObject obj in gameObjectsDesactivateOnDeath)
             {
                 obj.SetActive(false);
@@ -166,7 +169,11 @@ namespace Health
         public void ReactivateOnRespawn()
         {
             ResetHealth();
+            GetComponent<PlayerCam>().RestorePlayerCam();
             GetComponent<CapsuleCollider>().enabled = true;
+            
+            var playerInput = GetComponent<PlayerInput>();
+            playerInput.currentActionMap = playerInput.actions.FindActionMap("Player");
             
             foreach (GameObject obj in gameObjectsDesactivateOnDeath)
             {
