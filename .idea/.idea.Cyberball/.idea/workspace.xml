@@ -20,17 +20,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0eab473-54be-4889-bacc-70fc56399293" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerCam.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CinemachineBlend.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CinemachineBlend/CinemachineBlenderSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/CinemachineBlend/CinemachineBlenderSettings.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/CameraZoomIn.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Animations/CameraZoomIn.anim.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Imported assets/skyboxes/ColorSkies/Textures/Skybox_2/Front_Tex.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Imported assets/skyboxes/ColorSkies/Textures/Skybox_2/Front_Tex.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/CameraZoom.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/CameraZoom.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/CameraZoomDebug.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/CameraZoomDebug.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/CharacterAnim 1.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/CharacterAnim 1.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/RoomPlayer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/RoomPlayer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene_Map_02.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene_Map_02.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +103,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/HealthBar1.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/DeathBar.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/DisableIfLocalPlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerNetworkCommands.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ScoreUpdate.cs" />
@@ -109,7 +115,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/AddFullMeshCollider.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/Scoreboard.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/PlayerScoreBoardItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" />
@@ -118,6 +123,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCam.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
       </list>
     </option>
   </component>
@@ -194,7 +201,7 @@
       <workItem from="1607475166016" duration="784000" />
       <workItem from="1607618287991" duration="3926000" />
       <workItem from="1612609919630" duration="24985000" />
-      <workItem from="1612782616588" duration="19573000" />
+      <workItem from="1612782616588" duration="25819000" />
     </task>
     <servers />
   </component>

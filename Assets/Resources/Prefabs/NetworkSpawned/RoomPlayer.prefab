@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4817109203880908}
-  - component: {fileID: 1411436860755875174}
-  - component: {fileID: 9031751470160363860}
+  - component: {fileID: 1070214591405057059}
+  - component: {fileID: 7068438619276938126}
   m_Layer: 0
   m_Name: RoomPlayer
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1411436860755875174
+--- !u!114 &1070214591405057059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &9031751470160363860
+--- !u!114 &7068438619276938126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

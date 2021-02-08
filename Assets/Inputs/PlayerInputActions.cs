@@ -91,7 +91,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Aim"",
+                    ""name"": ""AimInput"",
                     ""type"": ""Value"",
                     ""id"": ""2c72443d-938a-4f33-a0f6-8c6783dba6fc"",
                     ""expectedControlType"": """",
@@ -258,7 +258,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
-                    ""action"": ""Aim"",
+                    ""action"": ""AimInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -333,7 +333,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_Scoreboard = m_Player.FindAction("Scoreboard", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_CrouchInput = m_Player.FindAction("CrouchInput", throwIfNotFound: true);
-        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_AimInput = m_Player.FindAction("AimInput", throwIfNotFound: true);
         m_Player_Setiings = m_Player.FindAction("Setiings", throwIfNotFound: true);
         // DeadPlayer
         m_DeadPlayer = asset.FindActionMap("DeadPlayer", throwIfNotFound: true);
@@ -396,7 +396,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Scoreboard;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_CrouchInput;
-    private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_AimInput;
     private readonly InputAction m_Player_Setiings;
     public struct PlayerActions
     {
@@ -411,7 +411,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Scoreboard => m_Wrapper.m_Player_Scoreboard;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @CrouchInput => m_Wrapper.m_Player_CrouchInput;
-        public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @AimInput => m_Wrapper.m_Player_AimInput;
         public InputAction @Setiings => m_Wrapper.m_Player_Setiings;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -449,9 +449,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @CrouchInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouchInput;
                 @CrouchInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouchInput;
                 @CrouchInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrouchInput;
-                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
-                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
-                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @AimInput.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAimInput;
+                @AimInput.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAimInput;
+                @AimInput.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAimInput;
                 @Setiings.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetiings;
                 @Setiings.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetiings;
                 @Setiings.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSetiings;
@@ -486,9 +486,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @CrouchInput.started += instance.OnCrouchInput;
                 @CrouchInput.performed += instance.OnCrouchInput;
                 @CrouchInput.canceled += instance.OnCrouchInput;
-                @Aim.started += instance.OnAim;
-                @Aim.performed += instance.OnAim;
-                @Aim.canceled += instance.OnAim;
+                @AimInput.started += instance.OnAimInput;
+                @AimInput.performed += instance.OnAimInput;
+                @AimInput.canceled += instance.OnAimInput;
                 @Setiings.started += instance.OnSetiings;
                 @Setiings.performed += instance.OnSetiings;
                 @Setiings.canceled += instance.OnSetiings;
@@ -549,7 +549,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnScoreboard(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnCrouchInput(InputAction.CallbackContext context);
-        void OnAim(InputAction.CallbackContext context);
+        void OnAimInput(InputAction.CallbackContext context);
         void OnSetiings(InputAction.CallbackContext context);
     }
     public interface IDeadPlayerActions

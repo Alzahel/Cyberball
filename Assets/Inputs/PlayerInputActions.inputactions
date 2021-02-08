@@ -78,7 +78,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Aim",
+                    "name": "AimInput",
                     "type": "Value",
                     "id": "2c72443d-938a-4f33-a0f6-8c6783dba6fc",
                     "expectedControlType": "",
@@ -245,7 +245,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard & mouse",
-                    "action": "Aim",
+                    "action": "AimInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

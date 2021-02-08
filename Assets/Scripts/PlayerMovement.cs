@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Cinemachine;
 using JetBrains.Annotations;
 using Mirror;
 using UnityEngine;
@@ -35,10 +36,15 @@ public class PlayerMovement : NetworkBehaviour
     public float Horizontal { get; private set; }
     public float Vertical { get; private set; } 
         
+    //Zoom
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject camZoom;
+
     //States
     public bool IsCrouching{ get; private set; }
     public bool IsJumping{ get; private set; }
     public bool IsSprinting{ get; private set; }
+    public bool IsAiming{ get; private set; }
     
     //Events
     public event EventHandler<OnMoveEventArgs> OnMove;
@@ -60,10 +66,17 @@ public class PlayerMovement : NetworkBehaviour
         public bool IsCrouching;
     }
     
+    public event EventHandler<OnAimEventArgs> OnAim;
+    public class OnAimEventArgs : EventArgs
+    {
+        public bool IsAiming;
+    }
+    
     // Start is called before the first frame update
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        camZoom.SetActive(false);
     }
 
     public override void OnStartAuthority()
@@ -187,6 +200,20 @@ public class PlayerMovement : NetworkBehaviour
         OnCrouch?.Invoke(this, new OnCrouchEventArgs{IsCrouching = IsCrouching});
     }
 
+    private void Aim()
+    {
+        IsAiming = true;
+        cam.SetActive(false);
+        camZoom.SetActive(true);
+    }
+
+    private void CancelAim()
+    {
+        IsAiming = false;
+        camZoom.SetActive(false);
+        cam.SetActive(true);
+    }
+    
     private void Jump()
     {
         if (characterController.isGrounded)
@@ -253,6 +280,17 @@ public class PlayerMovement : NetworkBehaviour
         
         if (isKeyPushed) Crouch();
         else CancelCrouching();
+    }
+    
+    [UsedImplicitly]
+    private void OnAimInput(InputValue value)
+    {
+        if (!hasAuthority) return;
+        
+        var isKeyPushed = Math.Abs(value.Get<float>()) >= 1;
+        
+        if (isKeyPushed) Aim();
+        else CancelAim();
     }
     
     #endregion
