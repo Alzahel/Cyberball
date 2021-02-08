@@ -20,6 +20,10 @@ Espace : Saut
 Clic gauche : Tir  
 R : Recharger  
 
+Echap : Ouvrir les settings (régler la sensibilité de la souris)
+Tab : Voir le tableau des score
+Clic durant la mort : Changer de caméra allié
+
 ## Démos
 
 <details>
