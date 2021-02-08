@@ -20,28 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0eab473-54be-4889-bacc-70fc56399293" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Ball.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/NetworkSpawned/Ball.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/KillfeedItem.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/KillfeedItem.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Spawn/BallSpawner.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/Killfeed.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/Killfeed.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/KillfeedItem.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/KillfeedItem.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/AddFullMeshCollider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utils/AddFullMeshCollider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/ScoreboardUI.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/ScoreboardUI.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/PlayerScoreBoardItem.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/PlayerScoreBoardItem.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/Scoreboard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/Scoreboard.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.inputactions" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/PlayerHUD.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/PlayerHUD.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Scene_Map_02.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Scene_Map_02.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ball.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +61,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/Killfeed.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawn/BallSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TPSNetworkPrototype/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../TPSNetworkPrototype/Assets/Scripts/UI/Scoreboard/PlayerScoreBoardItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utils/DisableIfLocalPlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerNetworkCommands.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Devices/Commands/SetIMECursorPositionCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TPSNetworkPrototype/Assets/Scripts/UI/PlayerNamePlate.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TPSNetworkPrototype/Assets/Scripts/Ball.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/Scoreboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/AmmunitionCount.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TPSNetworkPrototype/Assets/Scripts/Weapons/WeaponRecoil.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TPSNetworkPrototype/Assets/Scripts/UI/Killfeed/Killfeed.cs" root0="SKIP_HIGHLIGHTING" />
@@ -83,8 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/SetLayerRecursively.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Utils/Timer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/PlayerEnergyBar.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/package.json" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/Health.cs" />
@@ -100,7 +97,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/WeaponManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MatchSettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomPlayerExt.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerVisualEffects.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GameHUD.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/NextRoundTimerUpdate.cs" />
@@ -112,8 +108,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerCameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UISettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/PlayerPreferences.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/BarFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/HealthBar1.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spawn/PlayerSpawnSystem.cs" />
@@ -124,16 +118,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ScoreUpdate.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/KillfeedItem.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Killfeed/Killfeed.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkRoomManagerExt.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Spawn/BallSpawner.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/GameHud.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/MeshColliderFull.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/AddFullMeshCollider.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Damageable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerShoot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Health/Healable.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/Scoreboard.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Scoreboard/PlayerScoreBoardItem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Network/NetworkGamePlayer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -210,6 +209,7 @@
       <workItem from="1607475166016" duration="784000" />
       <workItem from="1607618287991" duration="3926000" />
       <workItem from="1612609919630" duration="24985000" />
+      <workItem from="1612782616588" duration="8272000" />
     </task>
     <servers />
   </component>
@@ -243,10 +243,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="364" key="ANALYSIS_DLG_com.jetbrains.rider.actions.impl.cleanup.RiderCodeCleanupAction$actionPerformed$dlg$1/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606179481799" />
-    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1612614306212">
+    <state x="727" y="244" key="RiderGenerateDialog" timestamp="1612785293591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="727" y="244" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612614306212" />
+    <state x="727" y="244" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1612785293591" />
     <state x="176" y="49" key="SettingsEditor" timestamp="1606180523727">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

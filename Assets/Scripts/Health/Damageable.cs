@@ -15,7 +15,7 @@ namespace Health
         }
 
         [Server]
-        public void Damage(int damageAmount, string source)
+        public void Damage(int damageAmount, GameObject source)
         {
             health.Remove(damageAmount, source);
         }

@@ -126,15 +126,16 @@ namespace Managers
         public event EventHandler<EventArgs> GoalScored;
         
         [Server]
-        public void ScoreGoal(int teamID)
+        public void ScoreGoal(NetworkGamePlayer player)
         {
             if (IsRoundOver) return;
 
-            RpcScoreGoal(teamID);
+            RpcScoreGoal(player.TeamID);
             GoalScored?.Invoke(this, EventArgs.Empty);
+            player.Goals += 1;
 
             StartCoroutine(StartNewRound());
-            
+
             Debug.Log("team 1 : "+ team1Score + "team 2 : " + team2Score );
         }
 

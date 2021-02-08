@@ -45,12 +45,12 @@ public class Ball : NetworkBehaviour
         }
 
         if (!col.CompareTag($"Goal")) return;
-        
         if (col.GetComponent<Goal>().GoalTeamID == player.TeamID) return;
-        GameManager.Instance.ScoreGoal(player.TeamID);
+
+        GameManager.Instance.ScoreGoal(player);
         ResetBall();
     }
-    
+
     private void CatchBall(Collider col)
     {
         if (isBallCarried) return;

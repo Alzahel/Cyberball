@@ -668,6 +668,10 @@
               <e p="Killfeed.cs" t="Include" />
               <e p="KillfeedItem.cs" t="Include" />
             </e>
+            <e p="Scoreboard" t="Include">
+              <e p="PlayerScoreBoardItem.cs" t="Include" />
+              <e p="Scoreboard.cs" t="Include" />
+            </e>
             <e p="ScoreUpdate.cs" t="Include" />
             <e p="UISettings.cs" t="Include" />
           </e>

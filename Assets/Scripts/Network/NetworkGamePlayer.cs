@@ -15,6 +15,26 @@ namespace Network
         //score
         [SyncVar] private int kills;
         [SyncVar] private int deaths;
+        [SyncVar] private int goals;
+
+        public int Kills
+        {
+            get => kills;
+            set => kills = value;
+        }
+
+        public int Deaths
+        {
+            get => deaths;
+            set => deaths = value;
+        }
+        
+        public int Goals
+        {
+            get => goals;
+            set => goals = value;
+        }
+        
 
         public event EventHandler OnRespawn;
 
@@ -30,18 +50,13 @@ namespace Network
 
         public bool HasLoaded { get => hasLoaded; set => hasLoaded = value; }
 
+        
         //We add the player to the list of players;
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-
-            GameManager.Instance.Players.Add(this);
-            
-        }
-
         public override void OnStartClient()
         {
-            gameObject.name = Username;
+                GameManager.Instance.Players.Add(this);
+
+                gameObject.name = Username;
         }
 
         #endregion

@@ -165,6 +165,6 @@ public class PlayerShoot : NetworkBehaviour
     {
         Debug.Log(hitGameObject.name + " has been shot.");
         
-        hitGameObject.GetComponent<Damageable>().Damage(damage, GetComponent<NetworkGamePlayer>().Username);
+        hitGameObject.GetComponent<Damageable>().Damage(damage, gameObject);
     }
 }

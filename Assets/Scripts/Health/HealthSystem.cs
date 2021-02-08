@@ -68,7 +68,7 @@ namespace Health
         }
     
         [Server]
-        public void Remove(float value, string source)
+        public void Remove(float value, GameObject source)
         {
             currentHealth -= value;
             
@@ -95,15 +95,21 @@ namespace Health
         }
         
         [Server]
-        private void HandleDeath(string source)
+        private void HandleDeath(GameObject source)
         {
-           
+
+            var player = GetComponent<NetworkGamePlayer>();
+            var sourcePlayer = source.GetComponent<NetworkGamePlayer>();
+
+            player.Deaths += 1;
+            sourcePlayer.Kills += 1;
+
             //Handle death on clients
-            RpcHandleDeath(source);
+            RpcHandleDeath(source.name);
             
             //do not respawn if the round is Over
             if(!GameManager.Instance.IsRoundOver) PlayerSpawnSystem.Instance.SpawnPlayer(gameObject, 
-                PlayerSpawnSystem.Instance.GetSpawnPos(GetComponent<NetworkGamePlayer>().TeamID), MatchSettings.RespawnTime);
+                PlayerSpawnSystem.Instance.GetSpawnPos(player.TeamID), MatchSettings.RespawnTime);
 
             StartCoroutine(CalculateDeathTimeReamining());
         }

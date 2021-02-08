@@ -12,7 +12,7 @@ namespace Health
             healthSystem = GetComponent<HealthSystem>();
         }
 
-        public void Heal(int healAmount, string source)
+        public void Heal(int healAmount, GameObject source)
         {
             healthSystem.Remove(healAmount, source);
         }
