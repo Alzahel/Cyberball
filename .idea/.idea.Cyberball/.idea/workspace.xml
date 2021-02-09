@@ -21,8 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d0eab473-54be-4889-bacc-70fc56399293" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cyberball/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Inputs/PlayerInputActions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UISettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UISettings.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/UIManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/DontDestroyOnLoad.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Camera/PlayerCameraController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UISettings.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/PlayerPreferences.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/BarFill.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/HealthBar1.cs" />
@@ -110,6 +110,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Health/HealthSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UISettings.cs" />
       </list>
     </option>
   </component>
@@ -187,7 +188,7 @@
       <workItem from="1607618287991" duration="3926000" />
       <workItem from="1612609919630" duration="24985000" />
       <workItem from="1612782616588" duration="26546000" />
-      <workItem from="1612876505097" duration="200000" />
+      <workItem from="1612876505097" duration="1100000" />
     </task>
     <servers />
   </component>

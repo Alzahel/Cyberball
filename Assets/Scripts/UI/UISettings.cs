@@ -1,4 +1,5 @@
 ﻿using System;
+using Cyberball.Camera;
 using JetBrains.Annotations;
 using Managers;
 using Mirror;
@@ -22,11 +23,9 @@ namespace UI
         [SerializeField] private Slider yCamSensitivitySlider;
         [SerializeField] private InputField yCamSensitivityInputField;
 
-        private GameObject player;
+        private PlayerInput playerInput;
         private PlayerPreferences.SettingsDatas settingsDatas;
-
-        //private Player player = null;
-        //private CinemachineVirtualCamera playerCam;
+        
         private void Awake()
         {
             DontDestroyOnLoad(this);
@@ -71,19 +70,22 @@ namespace UI
 
         private void ChangeCursorState()
         {
-            player = ClientScene.localPlayer.gameObject;
+            playerInput = ClientScene.localPlayer.GetComponent<PlayerInput>();
+            var playerCam = ClientScene.localPlayer.GetComponent<PlayerCameraController>();
             
             if(settings.activeSelf)
             {
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-                player.GetComponent<PlayerInput>().enabled = false;
+                playerInput.currentActionMap = playerInput.actions.FindActionMap("UI");
+                playerCam.enabled = false;
             }
             else
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                player.GetComponent<PlayerInput>().enabled = true;
+                playerInput.currentActionMap = playerInput.actions.FindActionMap("Player");
+                playerCam.enabled = true;
             }
            
         }
