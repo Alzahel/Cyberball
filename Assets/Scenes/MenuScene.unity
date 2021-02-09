@@ -217,7 +217,7 @@ MonoBehaviour:
   spawnPrefabs: []
   showRoomGUI: 0
   minPlayers: 1
-  roomPlayerPrefab: {fileID: 9031751470160363860, guid: e98f18dd64589464fb0d316d7a554c02, type: 3}
+  roomPlayerPrefab: {fileID: 7068438619276938126, guid: e98f18dd64589464fb0d316d7a554c02, type: 3}
   RoomScene: Assets/Scenes/MenuScene.unity
   GameplayScene: Assets/Scenes/Scene_Map_02.unity
   _allPlayersReady: 0
@@ -227,7 +227,6 @@ MonoBehaviour:
   team2: []
   spawnSystem: {fileID: 8681770514229190727, guid: d6b561951ca72e541a18b613e025b827, type: 3}
   gameManager: {fileID: 1921971947086495477, guid: 2126d05c748551c428f22ffa424a324b, type: 3}
-  ball: {fileID: 7549876552937938177, guid: 765c4c900ec78564cad786e6fe5cc91a, type: 3}
   gameHud: {fileID: 5833344863403983706, guid: ad6bd1e5b1b9f124c9a706fac099e5a5, type: 3}
 --- !u!4 &16196412
 Transform:

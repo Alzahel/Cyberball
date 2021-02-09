@@ -143,7 +143,7 @@ namespace Health
             GetComponent<CapsuleCollider>().enabled = false;
             
             var playerInput = GetComponent<PlayerInput>();
-            playerInput.currentActionMap = playerInput.actions.FindActionMap("DeadPlayer");
+            if(hasAuthority) playerInput.currentActionMap = playerInput.actions.FindActionMap("DeadPlayer");
             
             foreach (GameObject obj in gameObjectsDesactivateOnDeath)
             {
@@ -173,7 +173,7 @@ namespace Health
             GetComponent<CapsuleCollider>().enabled = true;
             
             var playerInput = GetComponent<PlayerInput>();
-            playerInput.currentActionMap = playerInput.actions.FindActionMap("Player");
+            if(hasAuthority) playerInput.currentActionMap = playerInput.actions.FindActionMap("Player");
             
             foreach (GameObject obj in gameObjectsDesactivateOnDeath)
             {
